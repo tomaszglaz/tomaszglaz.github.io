@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Tomasz Głaz</title>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="404">
+
+<nav class="topbar">
+  <a href="index.html" class="nav-logo">Tomasz Głaz</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-pl="Start" data-en="Home">Start</a></li>
+    <li><a href="pages/projects.html" data-pl="Projekty" data-en="Projects">Projekty</a></li>
+    <li><a href="pages/about.html" data-pl="O mnie" data-en="About">O mnie</a></li>
+    <li><a href="pages/contact.html" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Przełącz jasny motyw">
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <path d="M20.2 14.1a8.5 8.5 0 0 1-10.3-10.3 1 1 0 0 0-1.3-1.2A10 10 0 1 0 21.4 15.4a1 1 0 0 0-1.2-1.3Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <circle cx="12" cy="12" r="4.25" fill="currentColor" />
+          <path d="M12 1.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm0 16.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75ZM4.58 4.58a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 1 1-1.06 1.06L4.58 5.64a.75.75 0 0 1 0-1.06Zm12.37 12.37a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 0 1-1.06 1.06l-1.41-1.41a.75.75 0 0 1 0-1.06ZM1.75 12a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75Zm16.75 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75ZM5.99 16.95a.75.75 0 0 1 1.06 1.06l-1.41 1.41a.75.75 0 0 1-1.06-1.06l1.41-1.41Zm12.37-12.37a.75.75 0 1 1 1.06 1.06l-1.41 1.41a.75.75 0 1 1-1.06-1.06l1.41-1.41Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+    <div class="accessibility-menu-wrap">
+      <button class="icon-btn accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityMenu" aria-label="Ustawienia dostępności">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon-svg icon-accessibility" focusable="false">
+            <circle cx="12" cy="4.75" r="1.85" fill="currentColor" />
+            <path d="M5.1 8.45a1.2 1.2 0 1 1 .22-2.39c2.33.21 4.48.31 6.46.31 1.97 0 4.1-.1 6.38-.31a1.2 1.2 0 1 1 .22 2.39c-1.85.17-3.58.27-5.19.31v4.45l1.68 5.66a1.25 1.25 0 0 1-2.4.71l-1.3-4.38-1.27 4.38a1.25 1.25 0 0 1-2.4-.7l1.65-5.67V8.74c-1.3-.04-2.99-.14-5.05-.29Z" fill="currentColor" />
+            <path d="M7.1 20.15a1.2 1.2 0 0 1-1.16-1.5l1.4-5.18a1.2 1.2 0 1 1 2.32.63l-1.4 5.18a1.2 1.2 0 0 1-1.16.87Zm9.72 0a1.2 1.2 0 0 1-1.16-.88l-1.37-5.18a1.2 1.2 0 0 1 2.32-.61l1.37 5.18a1.2 1.2 0 0 1-1.16 1.49Z" fill="currentColor" />
+          </svg>
+        </span>
+      </button>
+      <div class="accessibility-menu" id="accessibilityMenu" hidden>
+        <button class="menu-btn" id="contrastToggle" type="button" aria-pressed="false"><span data-pl="Wysoki kontrast" data-en="High contrast">Wysoki kontrast</span></button>
+        <button class="menu-btn" id="fontToggle" type="button" aria-pressed="false"><span data-pl="Większy tekst" data-en="Larger text">Większy tekst</span></button>
+      </div>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<main class="site-shell subpage-layout">
+  <section class="error-hero">
+    <div class="eyebrow fade-in fade-in-1" data-pl="BŁĄD / STRONA NIE ISTNIEJE" data-en="ERROR / PAGE NOT FOUND">BŁĄD / STRONA NIE ISTNIEJE</div>
+    <div class="error-code fade-in fade-in-2"><span class="outline-text">404</span></div>
+    <h1 class="page-title fade-in fade-in-3" data-pl="Nie ma tu tej <span class='outline-text'>strony</span>" data-en="This <span class='outline-text'>page</span> does not exist">Nie ma tu tej <span class="outline-text">strony</span></h1>
+    <p class="error-copy fade-in fade-in-4" data-pl="Link jest niepoprawny albo strona została przeniesiona. Na GitHub Pages taka strona pomaga złapać błędne adresy i odesłać użytkownika w sensowne miejsce zamiast zostawić go na pustej stronie." data-en="The link is incorrect or the page has been moved. On GitHub Pages this page catches broken URLs and sends the visitor somewhere useful instead of leaving them on an empty screen.">Link jest niepoprawny albo strona została przeniesiona. Na GitHub Pages taka strona pomaga złapać błędne adresy i odesłać użytkownika w sensowne miejsce zamiast zostawić go na pustej stronie.</p>
+    <div class="error-actions fade-in fade-in-5">
+      <a href="index.html" class="btn-primary" data-pl="Wróć na start" data-en="Back to home">Wróć na start</a>
+      <a href="pages/projects.html" class="btn-ghost" data-pl="Zobacz projekty" data-en="See projects">Zobacz projekty</a>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title" data-pl="Gdzie możesz przejść" data-en="Where you can go">Gdzie możesz przejść</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="error-grid">
+        <article class="info-card featured">
+          <div class="card-kicker" data-pl="NAJLEPSZA OPCJA" data-en="BEST OPTION">NAJLEPSZA OPCJA</div>
+          <h3 class="info-title" data-pl="Wróć na <span class='highlight'>stronę główną</span>" data-en="Go back to the <span class='highlight'>homepage</span>">Wróć na <span class="highlight">stronę główną</span></h3>
+          <p class="info-copy" data-pl="Jeśli trafiłeś tutaj z błędnego linku, strona główna będzie najlepszym punktem startowym. Stamtąd przejdziesz do projektów, informacji o mnie i kontaktu." data-en="If you landed here from a broken link, the homepage is the best starting point. From there you can move to projects, the about page, and contact.">Jeśli trafiłeś tutaj z błędnego linku, strona główna będzie najlepszym punktem startowym. Stamtąd przejdziesz do projektów, informacji o mnie i kontaktu.</p>
+        </article>
+
+        <aside class="looking-for">
+          <div class="looking-title" data-pl="// SZYBKIE LINKI" data-en="// QUICK LINKS">// SZYBKIE LINKI</div>
+          <div class="looking-items">
+            <div class="looking-item">
+              <span class="looking-item-icon">→</span>
+              <a href="index.html" class="accent-text" data-pl="Strona główna" data-en="Homepage">Strona główna</a>
+            </div>
+            <div class="looking-item">
+              <span class="looking-item-icon">→</span>
+              <a href="pages/projects.html" class="accent-text" data-pl="Projekty i analizy" data-en="Projects and analyses">Projekty i analizy</a>
+            </div>
+            <div class="looking-item">
+              <span class="looking-item-icon">→</span>
+              <a href="pages/about.html" class="accent-text" data-pl="O mnie" data-en="About">O mnie</a>
+            </div>
+            <div class="looking-item">
+              <span class="looking-item-icon">→</span>
+              <a href="pages/contact.html" class="accent-text" data-pl="Kontakt" data-en="Contact">Kontakt</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="footer-text">© 2026 Tomasz Głaz</span>
+  <span class="footer-text" data-pl="Katowice, Polska" data-en="Katowice, Poland">Katowice, Polska</span>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

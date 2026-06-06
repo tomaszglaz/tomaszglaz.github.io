@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomasz Głaz — Financial Analyst & Data Scientist</title>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="home">
+
+<nav class="topbar">
+  <a href="index.html" class="nav-logo">Tomasz Głaz</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="is-active" data-pl="Start" data-en="Home">Start</a></li>
+    <li><a href="pages/projects.html" data-pl="Projekty" data-en="Projects">Projekty</a></li>
+    <li><a href="pages/about.html" data-pl="O mnie" data-en="About">O mnie</a></li>
+    <li><a href="pages/contact.html" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Przełącz jasny motyw">
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <path d="M20.2 14.1a8.5 8.5 0 0 1-10.3-10.3 1 1 0 0 0-1.3-1.2A10 10 0 1 0 21.4 15.4a1 1 0 0 0-1.2-1.3Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <circle cx="12" cy="12" r="4.25" fill="currentColor" />
+          <path d="M12 1.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm0 16.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75ZM4.58 4.58a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 1 1-1.06 1.06L4.58 5.64a.75.75 0 0 1 0-1.06Zm12.37 12.37a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 0 1-1.06 1.06l-1.41-1.41a.75.75 0 0 1 0-1.06ZM1.75 12a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75Zm16.75 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75ZM5.99 16.95a.75.75 0 0 1 1.06 1.06l-1.41 1.41a.75.75 0 0 1-1.06-1.06l1.41-1.41Zm12.37-12.37a.75.75 0 1 1 1.06 1.06l-1.41 1.41a.75.75 0 1 1-1.06-1.06l1.41-1.41Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+    <div class="accessibility-menu-wrap">
+      <button class="icon-btn accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityMenu" aria-label="Ustawienia dostępności">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon-svg icon-accessibility" focusable="false">
+            <circle cx="12" cy="4.75" r="1.85" fill="currentColor" />
+            <path d="M5.1 8.45a1.2 1.2 0 1 1 .22-2.39c2.33.21 4.48.31 6.46.31 1.97 0 4.1-.1 6.38-.31a1.2 1.2 0 1 1 .22 2.39c-1.85.17-3.58.27-5.19.31v4.45l1.68 5.66a1.25 1.25 0 0 1-2.4.71l-1.3-4.38-1.27 4.38a1.25 1.25 0 0 1-2.4-.7l1.65-5.67V8.74c-1.3-.04-2.99-.14-5.05-.29Z" fill="currentColor" />
+            <path d="M7.1 20.15a1.2 1.2 0 0 1-1.16-1.5l1.4-5.18a1.2 1.2 0 1 1 2.32.63l-1.4 5.18a1.2 1.2 0 0 1-1.16.87Zm9.72 0a1.2 1.2 0 0 1-1.16-.88l-1.37-5.18a1.2 1.2 0 0 1 2.32-.61l1.37 5.18a1.2 1.2 0 0 1-1.16 1.49Z" fill="currentColor" />
+          </svg>
+        </span>
+      </button>
+      <div class="accessibility-menu" id="accessibilityMenu" hidden>
+        <button class="menu-btn" id="contrastToggle" type="button" aria-pressed="false"><span data-pl="Wysoki kontrast" data-en="High contrast">Wysoki kontrast</span></button>
+        <button class="menu-btn" id="fontToggle" type="button" aria-pressed="false"><span data-pl="Większy tekst" data-en="Larger text">Większy tekst</span></button>
+      </div>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<main class="site-shell">
+  <section id="hero">
+    <canvas id="candleChart" class="hero-bg-canvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-tag fade-in fade-in-1" data-pl="ANALITYK FINANSOWY & DATA SCIENTIST" data-en="FINANCIAL ANALYST & DATA SCIENTIST">ANALITYK FINANSOWY & DATA SCIENTIST</div>
+    <h1 class="fade-in fade-in-2">Tomasz<br><span class="h1-accent">Głaz</span></h1>
+    <p class="hero-desc fade-in fade-in-3" data-pl="Student Analityki Finansowej na UEKAT. Buduję boty tradingowe z Deep Reinforcement Learning, piszę własne analizy finansowe w Pythonie i automatyzuję procesy danych." data-en="Financial Analytics student at UEK Katowice. I build trading bots with Deep Reinforcement Learning, write my own financial analyses in Python, and automate data pipelines.">Student Analityki Finansowej na UEK. Buduję boty tradingowe z Deep Reinforcement Learning, piszę własne analizy finansowe w Pythonie i automatyzuję procesy danych.</p>
+    <div class="hero-cta fade-in fade-in-4">
+      <a href="pages/projects.html" class="btn-primary" data-pl="Zobacz projekty" data-en="See projects">Zobacz projekty</a>
+      <a href="pages/contact.html" class="btn-ghost" data-pl="Skontaktuj się" data-en="Get in touch">Skontaktuj się</a>
+    </div>
+  </section>
+
+  <section class="page-section tiles-section">
+    <div class="content-wrap tiles-wrap">
+      <div class="tiles-grid">
+
+        <article class="feature-tile">
+          <canvas class="tile-canvas" id="statsCanvas" aria-hidden="true"></canvas>
+          <div class="tile-content">
+            <h3 class="tile-title" data-pl="Projekty i analizy" data-en="Projects and analyses">Projekty i analizy</h3>
+            <p class="tile-desc" data-pl="Eksperymenty z RL, ewolucja modelu tradingowego i analizy finansowe w Pythonie." data-en="RL experiments, trading model evolution, and financial analyses in Python.">Eksperymenty z RL, ewolucja modelu tradingowego i analizy finansowe w Pythonie.</p>
+            <a href="pages/projects.html" class="btn-inline" data-pl="Otwórz projekty" data-en="Open projects">Otwórz projekty</a>
+          </div>
+        </article>
+
+        <article class="feature-tile">
+          <canvas class="tile-canvas" id="tileCandles" aria-hidden="true"></canvas>
+          <div class="tile-content">
+            <h3 class="tile-title" data-pl="O mnie i kierunek" data-en="About and direction">O mnie i kierunek</h3>
+            <p class="tile-desc" data-pl="Doświadczenie, sposób myślenia i umiejętności — czego szukam we współpracy." data-en="Experience, mindset and skills — what kind of collaboration I'm looking for.">Doświadczenie, sposób myślenia i umiejętności — czego szukam we współpracy.</p>
+            <a href="pages/about.html" class="btn-inline" data-pl="Przejdź dalej" data-en="Go to page">Przejdź dalej</a>
+          </div>
+        </article>
+
+        <article class="feature-tile">
+          <canvas class="tile-canvas" id="emailCanvas" aria-hidden="true"></canvas>
+          <div class="tile-content">
+            <h3 class="tile-title" data-pl="Kontakt i CV" data-en="Contact and CV">Kontakt i CV</h3>
+            <p class="tile-desc" data-pl="Linki kontaktowe, dostępność i CV do pobrania." data-en="Contact links, availability, and CV download.">Linki kontaktowe, dostępność i CV do pobrania.</p>
+            <a href="pages/contact.html" class="btn-inline" data-pl="Otwórz kontakt" data-en="Open contact">Otwórz kontakt</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="footer-text">© 2026 Tomasz Głaz</span>
+  <span class="footer-text" data-pl="Tarnowskie Góry, Polska" data-en="Tarnowskie Góry, Poland">Tarnowskie Góry, Polska</span>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/candle-chart.js"></script>
+<script src="assets/js/tiles.js"></script>
+</body>
+</html>

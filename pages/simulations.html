@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symulacje i Analizy — Tomasz Głaz</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+</head>
+<body data-page="projects">
+
+<nav class="topbar">
+  <a href="../index.html" class="nav-logo">Tomasz Głaz</a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-pl="Start" data-en="Home">Start</a></li>
+    <li><a href="projects.html" class="is-active" data-pl="Projekty" data-en="Projects">Projekty</a></li>
+    <li><a href="about.html" data-pl="O mnie" data-en="About">O mnie</a></li>
+    <li><a href="contact.html" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Przełącz jasny motyw">
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <path d="M20.2 14.1a8.5 8.5 0 0 1-10.3-10.3 1 1 0 0 0-1.3-1.2A10 10 0 1 0 21.4 15.4a1 1 0 0 0-1.2-1.3Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <circle cx="12" cy="12" r="4.25" fill="currentColor" />
+          <path d="M12 1.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm0 16.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75ZM4.58 4.58a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 1 1-1.06 1.06L4.58 5.64a.75.75 0 0 1 0-1.06Zm12.37 12.37a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 0 1-1.06 1.06l-1.41-1.41a.75.75 0 0 1 0-1.06ZM1.75 12a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75Zm16.75 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75ZM5.99 16.95a.75.75 0 0 1 1.06 1.06l-1.41 1.41a.75.75 0 0 1-1.06-1.06l1.41-1.41Zm12.37-12.37a.75.75 0 1 1 1.06 1.06l-1.41 1.41a.75.75 0 1 1-1.06-1.06l1.41-1.41Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+    <div class="accessibility-menu-wrap">
+      <button class="icon-btn accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityMenu" aria-label="Ustawienia dostępności">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon-svg icon-accessibility" focusable="false">
+            <circle cx="12" cy="4.75" r="1.85" fill="currentColor" />
+            <path d="M5.1 8.45a1.2 1.2 0 1 1 .22-2.39c2.33.21 4.48.31 6.46.31 1.97 0 4.1-.1 6.38-.31a1.2 1.2 0 1 1 .22 2.39c-1.85.17-3.58.27-5.19.31v4.45l1.68 5.66a1.25 1.25 0 0 1-2.4.71l-1.3-4.38-1.27 4.38a1.25 1.25 0 0 1-2.4-.7l1.65-5.67V8.74c-1.3-.04-2.99-.14-5.05-.29Z" fill="currentColor" />
+            <path d="M7.1 20.15a1.2 1.2 0 0 1-1.16-1.5l1.4-5.18a1.2 1.2 0 1 1 2.32.63l-1.4 5.18a1.2 1.2 0 0 1-1.16.87Zm9.72 0a1.2 1.2 0 0 1-1.16-.88l-1.37-5.18a1.2 1.2 0 0 1 2.32-.61l1.37 5.18a1.2 1.2 0 0 1-1.16 1.49Z" fill="currentColor" />
+          </svg>
+        </span>
+      </button>
+      <div class="accessibility-menu" id="accessibilityMenu" hidden>
+        <button class="menu-btn" id="contrastToggle" type="button" aria-pressed="false"><span data-pl="Wysoki kontrast" data-en="High contrast">Wysoki kontrast</span></button>
+        <button class="menu-btn" id="fontToggle" type="button" aria-pressed="false"><span data-pl="Większy tekst" data-en="Larger text">Większy tekst</span></button>
+      </div>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<main class="site-shell subpage-layout">
+  <section class="page-hero">
+    <canvas id="candleChart" class="hero-bg-canvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="eyebrow fade-in fade-in-1" data-pl="PROJEKT 02 / PYTHON / STATYSTYKI FINANSOWE" data-en="PROJECT 02 / PYTHON / FINANCIAL STATISTICS">PROJEKT 02 / PYTHON / STATYSTYKI FINANSOWE</div>
+    <h1 class="page-title fade-in fade-in-2" data-pl="Symulacje i <span class='outline-text'>Analizy</span>" data-en="Simulations and <span class='outline-text'>Analyses</span>">Symulacje i <span class="outline-text">Analizy</span></h1>
+    <p class="page-lead fade-in fade-in-3" data-pl="Analizy finansowe w Pythonie — rozkłady zwrotów, korelacje aktywów, symulacje Monte Carlo i testy statystyczne." data-en="Financial analyses in Python — return distributions, asset correlations, Monte Carlo simulations and statistical tests.">Analizy finansowe w Pythonie — rozkłady zwrotów, korelacje aktywów, symulacje Monte Carlo i testy statystyczne.</p>
+    <div class="button-row fade-in fade-in-4">
+      <a href="projects.html" class="btn-ghost" data-pl="← Wróć do projektów" data-en="← Back to projects">← Wróć do projektów</a>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Empiryczny rozkład zmienności (absolutnych stóp zwrotu) indeksu NASDAQ100" data-en="Empirical Distribution of NASDAQ100 Absolute Returns">Empiryczny rozkład zmienności (absolutnych stóp zwrotu) indeksu NASDAQ100</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-presentation-block" style="display: flex; flex-direction: column; gap: 30px;">
+        <div class="journey-card featured">
+          <div class="card-phase" data-pl="ANALIZA ZMIENNOŚCI HISTORYCZNEJ" data-en="HISTORICAL VOLATILITY ANALYSIS">ANALIZA ZMIENNOŚCI HISTORYCZNEJ</div>
+          
+          <div class="card-title" data-pl="Empiryczny rozkład zmienności (absolutnych stóp zwrotu) indeksu NASDAQ100" data-en="Empirical volatility distribution (absolute returns) of the NASDAQ100 index">Empiryczny rozkład zmienności (absolutnych stóp zwrotu) indeksu NASDAQ100</div>
+          
+          <div class="card-body" 
+               data-pl="Na początku chciałem po prostu sprawdzić, jak w rzeczywistości wygląda zmienność na indeksie NASDAQ100. Zamiast analizować kierunkowe zyski i straty, wyciągnąłem z danych wartości bezwzględne dziennych stóp zwrotu (absolute returns) z ponad 30 lat. Kod napisany w Pythonie pobiera dane, usuwa puste wartości (NaN) i generuje znormalizowany histogram w Plotly. Wykres idealnie pokazuje zjawisko grubych ogonów (fat tails). Ekstremalne ruchy rynkowe rzędu kilku procent zdarzają się dużo częściej, niż wynikałoby to z teoretycznego rozkładu normalnego. Kod pisany bez pomocy AI." 
+               data-en="Initially, I just wanted to check what the volatility on the NASDAQ100 index actually looks like in reality. Instead of analyzing directional profits and losses, I extracted the absolute values of daily returns from over 30 years of data. The Python code downloads the data, removes missing values (NaNs), and generates a normalized histogram using Plotly. The chart perfectly illustrates the fat tails phenomenon. Extreme market moves of several percent happen much more often than a theoretical normal distribution would suggest. Code written without AI assistance.">
+            Na początku chciałem po prostu sprawdzić, jak w rzeczywistości wygląda zmienność na indeksie NASDAQ100. Zamiast analizować kierunkowe zyski i straty, wyciągnąłem z danych wartości bezwzględne dziennych stóp zwrotu (absolute returns) z ponad 30 lat. Kod napisany w Pythonie pobiera dane, usuwa puste wartości (NaN) i generuje znormalizowany histogram w Plotly. Wykres idealnie pokazuje zjawisko grubych ogonów (fat tails). Ekstremalne ruchy rynkowe rzędu kilku procent zdarzają się dużo częściej, niż wynikałoby to z teoretycznego rozkładu normalnego. Kod pisany bez pomocy AI.
+          </div>
+        </div>
+
+        <div class="code-terminal-container" style="background: #0f1115; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; font-family: monospace;">
+          <div class="terminal-header" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px; color: #6f7682; font-size: 0.85em;">nasdaq100_analysis.py</div>
+          <pre style="margin: 0; overflow-x: auto; color: #e1e4ea;"><code class="language-python">
+import yfinance as yf
+import pandas as pd 
+import plotly.graph_objects as go
+import plotly as plt
+from datetime import datetime
+df = yf.download('^NDX', start = '1990-01-01', end = '2026-05-31', interval = '1d')
+df = df.droplevel(1, 1)
+df['Date'] = df.index
+df['Date'] = pd.to_datetime(df['Date']).dt.date
+df['Change'] = df['Close'].pct_change()
+df['Abs_Change'] = df['Change'].abs()
+df = df.dropna()
+
+
+fig = go.Figure()
+fig.add_trace(go.Histogram(
+    x = df['Abs_Change'],
+    nbinsx = 100,
+    name = 'Rozkład zmian',
+    histnorm = 'percent',
+    marker_color = 'purple'
+))
+
+fig.update_layout(
+    title = 'Rozkład zmian procentowych w ciągu jednego dnia dla indeksu Nasdaq100 (^NDX)',
+    xaxis_title = 'Zmiana',
+    xaxis_tickformat = '.2%',
+    yaxis_tickformat = '.1f',
+    yaxis_title = 'Procent',
+    template = 'plotly_dark',
+    width = 1920,
+    height = 1080
+)
+
+fig.show()
+</code></pre>
+        </div>
+
+                <div class="result-container" style="border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; padding: 25px; background: rgba(255,255,255,0.01);">
+          <div class="card-phase" style="margin-bottom: 15px;" data-pl="WYNIK REZULTATU / WYKRES" data-en="OUTPUT RESULT / CHART">WYNIK REZULTATU / WYKRES</div>
+          
+          <div class="result-image-wrapper" style="border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+            <img src="assets/images/newplot-3.png" alt="Histogram absolutnych stóp zwrotu NASDAQ100" style="width: 100%; height: auto; display: block;">
+          </div>
+          
+          <div class="result-caption" style="font-size: 0.85em; color: #8b949e; text-align: center; margin-top: 15px;" 
+               data-pl="Rys. 1: Znormalizowany histogram absolutnych stóp zwrotu (1990-2026). Długi prawy ogon jednoznacznie potwierdza częstsze występowanie ekstremalnych wstrząsów rynkowych, niż zakłada to klasyczny rozkład normalny." 
+               data-en="Fig. 1: Normalized histogram of absolute returns (1990-2026). The long right tail explicitly confirms the higher frequency of extreme market shocks than what the classic normal distribution assumes.">
+            Rys. 1: Znormalizowany histogram absolutnych stóp zwrotu (1990-2026). Długi prawy ogon jednoznacznie potwierdza częstsze występowanie ekstremalnych wstrząsów rynkowych, niż zakłada to klasyczny rozkład normalny.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Pobieranie oraz obróbka danych Finansowych" data-en="Financial Data Extraction and Processing">Pobieranie oraz obróbka danych Finansowych</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-presentation-block" style="display: flex; flex-direction: column; gap: 30px;">
+        
+        <div class="journey-card featured">
+          <div class="card-phase" data-pl="DATA PIPELINE & OOP" data-en="DATA PIPELINE & OOP">DATA PIPELINE & OOP</div>
+          
+          <div class="card-title" data-pl="Obiektowy pipeline do pobierania i przetwarzania notowań" data-en="Object-oriented pipeline for fetching and processing stock quotes">Obiektowy pipeline do pobierania i przetwarzania notowań</div>
+          
+          <div class="card-body" 
+               data-pl="Praca z surowymi danymi finansowymi bywa uciążliwa, a ręczne powtarzanie tych samych operacji dla dziesiątek tickerów po prostu mija się z celem. Żeby zachować porządek, zastosowałem programowanie obiektowe (OOP) i napisałem klasę Stock, której zadaniem jest hermetyzacja całego pipeline'u. Klasa łączy się z API yfinance, radzi sobie z kłopotliwymi, wielopoziomowymi indeksami (multi-index), wylicza klasyczne wskaźniki (SMA50, SMA200) jako nowe cechy i czyści szereg z brakujących wartości. Rozbicie tego kodu na dwie oddzielne komórki w Jupyter Notebooku to celowy zabieg – pierwsza przechowuje logikę, druga wywołuje proces. Dzięki temu generowanie i wizualizacja danych są w 100% powtarzalne, a zbadanie innej spółki sprowadza się do zmiany tickera oraz szeregu czasowego w jednej linijce kodu. To miniatura architektury, z której korzystam w moim bocie tradingowym do pompowania danych bezpośrednio do środowiska RL." 
+               data-en="Working with raw financial data can be tedious, and manually repeating the same operations for dozens of tickers simply misses the point. To keep things organized, I applied Object-Oriented Programming (OOP) and wrote a Stock class designed to encapsulate the entire pipeline. It connects to the yfinance API, handles troublesome multi-level indexes, calculates classic indicators (SMA50, SMA200) as new features, and cleans the series of missing values. Splitting this code into two separate cells in a Jupyter Notebook is a deliberate move—the first stores the logic, while the second executes the process. This makes data generation and visualization 100% repeatable, and analyzing a different company comes down to changing the ticker and time frame in just one line of code. This is a miniature version of the architecture I use in my trading bot to pump data directly into the RL environment.">
+            Praca z surowymi danymi finansowymi bywa uciążliwa, a ręczne powtarzanie tych samych operacji dla dziesiątek tickerów po prostu mija się z celem. Żeby zachować porządek, zastosowałem programowanie obiektowe (OOP) i napisałem klasę Stock, której zadaniem jest hermetyzacja całego pipeline'u. Klasa łączy się z API yfinance, radzi sobie z kłopotliwymi, wielopoziomowymi indeksami (multi-index), wylicza klasyczne wskaźniki (SMA50, SMA200) jako nowe cechy i czyści szereg z brakujących wartości. Rozbicie tego kodu na dwie oddzielne komórki w Jupyter Notebooku to celowy zabieg – pierwsza przechowuje logikę, druga wywołuje proces. Dzięki temu generowanie i wizualizacja danych są w 100% powtarzalne, a zbadanie innej spółki sprowadza się do zmiany tickera oraz szeregu czasowego w jednej linijce kodu. To miniatura architektury, z której korzystam w moim bocie tradingowym do pompowania danych bezpośrednio do środowiska RL.
+          </div>
+        </div>
+        <div class="code-terminal-container" style="background: #0f1115; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; font-family: monospace;">
+          <div class="terminal-header" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px; color: #6f7682; font-size: 0.85em;">data_processor.py - Komórka 1</div>
+          <pre style="margin: 0; overflow-x: auto; color: #e1e4ea;"><code class="language-python">import yfinance as yf 
+import pandas as pd 
+import plotly.graph_objects as go
+import plotly as plt 
+import datetime as dt 
+
+class Stock:
+    def __init__(self, ticker, start, end):
+        self.ticker = ticker
+        self.start = start
+        self.end = end 
+        self.df = None
+        
+    def get_data(self):
+        df: pd.DataFrame = yf.download(self.ticker, self.start, self.end, interval = '1d')
+        self.df = df
+        if self.df is not None and not self.df.empty:
+            return self.df
+        else:
+            raise ValueError("Brak Danych lub niepoprawne ramy czasowe")
+            
+    def prepare_data(self):
+        self.df = self.df.droplevel(1, 1)
+        self.df['Date'] = self.df.index
+        self.df['SMA50'] = self.df['Close'].rolling(50).mean()
+        self.df['SMA200'] = self.df['Close'].rolling(200).mean()
+        self.df = self.df.dropna()
+        return self.df
+        
+    def chart_data(self):
+        fig = go.Figure()
+        fig.add_trace(go.Candlestick(
+            x = self.df['Date'],
+            open = self.df['Open'],
+            high = self.df['High'],
+            low = self.df['Low'],
+            close = self.df['Close'],
+            name = 'Notowania'
+        ))
+        fig.add_trace(go.Scatter(
+            x = self.df['Date'],
+            y = self.df['SMA50'],
+            mode = 'lines',
+            name = 'Średnia krocząca z 50 dni'
+        ))
+        fig.add_trace(go.Scatter(
+            x = self.df['Date'],
+            y = self.df['SMA200'],
+            mode = 'lines',
+            name = 'Średnia krocząca z 200 dni'
+        ))
+        fig.update_layout(
+            title = f'{self.ticker} Notowania',
+            xaxis_title = 'Data',
+            template = 'plotly_dark',
+            yaxis_title = 'Cena'
+        )
+        fig.show()</code></pre>
+        </div>
+        <div class="code-terminal-container" style="background: #0f1115; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; font-family: monospace;">
+          <div class="terminal-header" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px; color: #6f7682; font-size: 0.85em;">data_processor.py - Komórka 2</div>
+          <pre style="margin: 0; overflow-x: auto; color: #e1e4ea;"><code class="language-python">MA = Stock(ticker = 'MA', start = '2018-01-01', end = '2025-12-31')
+MA.get_data()
+MA.prepare_data()
+MA.chart_data()</code></pre>
+        </div>
+                <div class="result-container" style="border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; padding: 25px; background: rgba(255,255,255,0.01);">
+          <div class="card-phase" style="margin-bottom: 15px;" data-pl="WYNIK REZULTATU / WYKRES" data-en="OUTPUT RESULT / CHART">WYNIK REZULTATU / WYKRES</div>
+          
+          <div class="result-image-wrapper" style="border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+            <img src="assets/images/newplot-4.png" alt="Wykres świecowy Mastercard MA ze średnimi kroczącymi" style="width: 100%; height: auto; display: block;">
+          </div>
+          
+          <div class="result-caption" style="font-size: 0.85em; color: #8b949e; text-align: center; margin-top: 15px;" 
+               data-pl="Rys. 2: Interaktywna wizualizacja wygenerowana przez klasę Stock w Plotly (ciemny motyw). Wykres świecowy (Candlestick) z nałożonymi średnimi kroczącymi SMA50 (czerwona) i SMA200 (zielona) dla Mastercard (MA) z lat 2018-2025. Prawidłowy rendering potwierdza integralność całego pipeline'u." 
+               data-en="Fig. 2: Interactive visualization generated by the Stock class in Plotly (dark theme). Candlestick chart overlaid with SMA50 (red) and SMA200 (green) simple moving averages for Mastercard (MA) from 2018-2025. Correct rendering confirms the integrity of the entire pipeline.">
+            Rys. 2: Interaktywna wizualizacja wygenerowana przez klasę Stock w Plotly (ciemny motyw). Wykres świecowy (Candlestick) z nałożonymi średnimi kroczącymi SMA50 (czerwona) i SMA200 (zielona) dla Mastercard (MA) z lat 2018-2025. Prawidłowy rendering potwierdza integralność całego pipeline'u.
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Uproszczona symulacja kreacji pieniądza przez banki komercyjne" data-en="Simplified Simulation of Money Creation by Commercial Banks">Uproszczona symulacja kreacji pieniądza przez banki komercyjne</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-presentation-block" style="display: flex; flex-direction: column; gap: 30px;">
+                <div class="journey-card featured">
+          <div class="card-phase" data-pl="SYMULACJA MAKROEKONOMICZNA" data-en="MACROECONOMIC SIMULATION">SYMULACJA MAKROEKONOMICZNA</div>
+          
+          <div class="card-title" data-pl="Algorytmizacja mnożnika kreacji pieniądza" data-en="Algorithmization of the money multiplier">Algorytmizacja mnożnika kreacji pieniądza</div>
+          
+          <div class="card-body" 
+               data-pl="Napisałem ten skrypt, aby na twardych liczbach i krok po kroku zrozumieć mechanizm kreacji pieniądza przez banki komercyjne. Aby uzupełnić wiedzę teoretyczną, postanowiłem przetestować ją w praktyce. Symulacja opiera się na dwóch kluczowych założeniach: stopie rezerwy obowiązkowej na poziomie 3% oraz mechanizmie, w którym każdy wykreowany kredyt po wydaniu natychmiast wraca do systemu bankowego jako nowy depozyt. Pętla while iteracyjnie potrąca rezerwę i pompuje nowy kapitał z powrotem do puli, aż wyczerpie się potencjał kredytowy. Ten prosty algorytm świetnie udowadnia matematycznie, jak działa mnożnik - z zaledwie 3000 zł pierwotnych depozytów (bazy monetarnej), system sztucznie kreuje 97 000 zł wirtualnego kapitału. Czysta mechanika rynkowa." 
+               data-en="I wrote this script to step-by-step understand the mechanism of money creation by commercial banks using hard numbers. To complement the theoretical knowledge, I decided to test it in practice. The simulation is based on two key assumptions: a reserve requirement ratio of 3%, and the mechanism where every created loan, once spent, immediately returns to the banking system as a new deposit. The while loop iteratively deducts the reserve and pumps new capital back into the pool until the credit potential is exhausted. This simple algorithm perfectly proves mathematically how the multiplier works—from just 3,000 PLN in initial deposits (monetary base), the system artificially creates 97,000 PLN of virtual capital. Pure market mechanics.">
+            Napisałem ten skrypt, aby na twardych liczbach i krok po kroku zrozumieć mechanizm kreacji pieniądza przez banki komercyjne. Aby uzupełnić wiedzę teoretyczną, postanowiłem przetestować ją w praktyce. Symulacja opiera się na dwóch kluczowych założeniach: stopie rezerwy obowiązkowej na poziomie 3% oraz mechanizmie, w którym każdy wykreowany kredyt po wydaniu natychmiast wraca do systemu bankowego jako nowy depozyt. Pętla while iteracyjnie potrąca rezerwę i pompuje nowy kapitał z powrotem do puli, aż wyczerpie się potencjał kredytowy. Ten prosty algorytm świetnie udowadnia matematycznie, jak działa mnożnik - z zaledwie 3000 zł pierwotnych depozytów (bazy monetarnej), system sztucznie kreuje 97 000 zł wirtualnego kapitału. Czysta mechanika rynkowa.
+          </div>
+        </div>
+
+        <div class="code-terminal-container" style="background: #0f1115; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; font-family: monospace;">
+          <div class="terminal-header" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px; color: #6f7682; font-size: 0.85em;">money_creation_sim.py</div>
+          <pre style="margin: 0; overflow-x: auto; color: #e1e4ea;"><code class="language-python">
+depozyt1: float = 1000.0
+depozyt2: float = 1000.0
+depozyt3: float = 1000.0
+depozyt_kredytobiorcy: float = 0.0
+
+stopa: float = 0.03
+krok = 1
+while ((depozyt1 + depozyt2 + depozyt3 + depozyt_kredytobiorcy) * (1 - stopa)) > depozyt_kredytobiorcy + 0.01:
+    calosc = depozyt1 + depozyt2 + depozyt3 + depozyt_kredytobiorcy
+    rezerwa = stopa * calosc
+    nowy_kredyt = calosc - rezerwa - depozyt_kredytobiorcy
+    depozyt_kredytobiorcy += nowy_kredyt
+    
+    print(f"Obrót {krok}:")
+    print(f"  Suma w banku: {calosc:.2f} zł")
+    print(f"  Zablokowana rezerwa: {rezerwa:.2f} zł")
+    print(f"  Stan konta kredytobiorcy: {depozyt_kredytobiorcy:.2f} zł\n")
+    
+    krok += 1
+
+print("-" * 50)
+print("WYNIK KOŃCOWY:")
+print(f"Suma depozytów pierwotnych (1+2+3): {depozyt1 + depozyt2 + depozyt3:.2f} zł")
+print(f"Wykreowany depozyt kredytobiorcy: {depozyt_kredytobiorcy:.2f} zł")
+print(f"Łączna kwota w systemie (calosc): {depozyt1 + depozyt2 + depozyt3 + depozyt_kredytobiorcy:.2f} zł")
+</code></pre>
+        </div>
+
+        <div class="console-output-container" style="background: #0d0f12; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
+          <div class="terminal-header" style="background: #161a22; padding: 12px 20px; font-family: monospace; font-size: 0.8em; color: #8b949e; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></div>
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></div>
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></div>
+            <span style="margin-left: 10px;">~/$ python money_creation.py</span>
+          </div>
+          
+          <div style="max-height: 350px; overflow-y: auto; padding: 20px; font-family: 'Courier New', Courier, monospace; color: #a3b8cc; font-size: 0.9em; line-height: 1.5;">
+            <pre style="margin: 0; white-space: pre-wrap;">
+Obrót 1:
+  Suma w banku: 3000.00 zł
+  Zablokowana rezerwa: 90.00 zł
+  Stan konta kredytobiorcy: 2910.00 zł
+
+Obrót 2:
+  Suma w banku: 5910.00 zł
+  Zablokowana rezerwa: 177.30 zł
+  Stan konta kredytobiorcy: 5732.70 zł
+
+Obrót 3:
+  Suma w banku: 8732.70 zł
+  Zablokowana rezerwa: 261.98 zł
+  Stan konta kredytobiorcy: 8470.72 zł
+
+Obrót 4:
+  Suma w banku: 11470.72 zł
+  Zablokowana rezerwa: 344.12 zł
+  Stan konta kredytobiorcy: 11126.60 zł
+
+Obrót 5:
+  Suma w banku: 14126.60 zł
+  Zablokowana rezerwa: 423.80 zł
+  Stan konta kredytobiorcy: 13702.80 zł
+
+Obrót 6:
+  Suma w banku: 16702.80 zł
+  Zablokowana rezerwa: 501.08 zł
+  Stan konta kredytobiorcy: 16201.72 zł
+
+Obrót 7:
+  Suma w banku: 19201.72 zł
+  Zablokowana rezerwa: 576.05 zł
+  Stan konta kredytobiorcy: 18625.66 zł
+
+Obrót 8:
+  Suma w banku: 21625.66 zł
+  Zablokowana rezerwa: 648.77 zł
+  Stan konta kredytobiorcy: 20976.89 zł
+
+Obrót 9:
+  Suma w banku: 23976.89 zł
+  Zablokowana rezerwa: 719.31 zł
+  Stan konta kredytobiorcy: 23257.59 zł
+
+Obrót 10:
+  Suma w banku: 26257.59 zł
+  Zablokowana rezerwa: 787.73 zł
+  Stan konta kredytobiorcy: 25469.86 zł
+
+Obrót 11:
+  Suma w banku: 28469.86 zł
+  Zablokowana rezerwa: 854.10 zł
+  Stan konta kredytobiorcy: 27615.76 zł
+
+Obrót 12:
+  Suma w banku: 30615.76 zł
+  Zablokowana rezerwa: 918.47 zł
+  Stan konta kredytobiorcy: 29697.29 zł
+
+Obrót 13:
+  Suma w banku: 32697.29 zł
+  Zablokowana rezerwa: 980.92 zł
+  Stan konta kredytobiorcy: 31716.37 zł
+
+Obrót 14:
+  Suma w banku: 34716.37 zł
+  Zablokowana rezerwa: 1041.49 zł
+  Stan konta kredytobiorcy: 33674.88 zł
+
+Obrót 15:
+  Suma w banku: 36674.88 zł
+  Zablokowana rezerwa: 1100.25 zł
+  Stan konta kredytobiorcy: 35574.63 zł
+
+Obrót 16:
+  Suma w banku: 38574.63 zł
+  Zablokowana rezerwa: 1157.24 zł
+  Stan konta kredytobiorcy: 37417.40 zł
+
+Obrót 17:
+  Suma w banku: 40417.40 zł
+  Zablokowana rezerwa: 1212.52 zł
+  Stan konta kredytobiorcy: 39204.87 zł
+
+Obrót 18:
+  Suma w banku: 42204.87 zł
+  Zablokowana rezerwa: 1266.15 zł
+  Stan konta kredytobiorcy: 40938.73 zł
+
+Obrót 19:
+  Suma w banku: 43938.73 zł
+  Zablokowana rezerwa: 1318.16 zł
+  Stan konta kredytobiorcy: 42620.57 zł
+
+Obrót 20:
+  Suma w banku: 45620.57 zł
+  Zablokowana rezerwa: 1368.62 zł
+  Stan konta kredytobiorcy: 44251.95 zł
+
+Obrót 21:
+  Suma w banku: 47251.95 zł
+  Zablokowana rezerwa: 1417.56 zł
+  Stan konta kredytobiorcy: 45834.39 zł
+
+Obrót 22:
+  Suma w banku: 48834.39 zł
+  Zablokowana rezerwa: 1465.03 zł
+  Stan konta kredytobiorcy: 47369.36 zł
+
+Obrót 23:
+  Suma w banku: 50369.36 zł
+  Zablokowana rezerwa: 1511.08 zł
+  Stan konta kredytobiorcy: 48858.28 zł
+
+Obrót 24:
+  Suma w banku: 51858.28 zł
+  Zablokowana rezerwa: 1555.75 zł
+  Stan konta kredytobiorcy: 50302.53 zł
+
+Obrót 25:
+  Suma w banku: 53302.53 zł
+  Zablokowana rezerwa: 1599.08 zł
+  Stan konta kredytobiorcy: 51703.45 zł
+
+Obrót 26:
+  Suma w banku: 54703.45 zł
+  Zablokowana rezerwa: 1641.10 zł
+  Stan konta kredytobiorcy: 53062.35 zł
+
+Obrót 27:
+  Suma w banku: 56062.35 zł
+  Zablokowana rezerwa: 1681.87 zł
+  Stan konta kredytobiorcy: 54380.48 zł
+
+Obrót 28:
+  Suma w banku: 57380.48 zł
+  Zablokowana rezerwa: 1721.41 zł
+  Stan konta kredytobiorcy: 55659.07 zł
+
+Obrót 29:
+  Suma w banku: 58659.07 zł
+  Zablokowana rezerwa: 1759.77 zł
+  Stan konta kredytobiorcy: 56899.29 zł
+
+Obrót 30:
+  Suma w banku: 59899.29 zł
+  Zablokowana rezerwa: 1796.98 zł
+  Stan konta kredytobiorcy: 58102.31 zł
+
+Obrót 31:
+  Suma w banku: 61102.31 zł
+  Zablokowana rezerwa: 1833.07 zł
+  Stan konta kredytobiorcy: 59269.24 zł
+
+Obrót 32:
+  Suma w banku: 62269.24 zł
+  Zablokowana rezerwa: 1868.08 zł
+  Stan konta kredytobiorcy: 60401.17 zł
+
+Obrót 33:
+  Suma w banku: 63401.17 zł
+  Zablokowana rezerwa: 1902.04 zł
+  Stan konta kredytobiorcy: 61499.13 zł
+
+Obrót 34:
+  Suma w banku: 64499.13 zł
+  Zablokowana rezerwa: 1934.97 zł
+  Stan konta kredytobiorcy: 62564.16 zł
+
+Obrót 35:
+  Suma w banku: 65564.16 zł
+  Zablokowana rezerwa: 1966.92 zł
+  Stan konta kredytobiorcy: 63597.23 zł
+
+Obrót 36:
+  Suma w banku: 66597.23 zł
+  Zablokowana rezerwa: 1997.92 zł
+  Stan konta kredytobiorcy: 64599.32 zł
+
+Obrót 37:
+  Suma w banku: 67599.32 zł
+  Zablokowana rezerwa: 2027.98 zł
+  Stan konta kredytobiorcy: 65571.34 zł
+
+Obrót 38:
+  Suma w banku: 68571.34 zł
+  Zablokowana rezerwa: 2057.14 zł
+  Stan konta kredytobiorcy: 66514.20 zł
+
+Obrót 39:
+  Suma w banku: 69514.20 zł
+  Zablokowana rezerwa: 2085.43 zł
+  Stan konta kredytobiorcy: 67428.77 zł
+
+Obrót 40:
+  Suma w banku: 70428.77 zł
+  Zablokowana rezerwa: 2112.86 zł
+  Stan konta kredytobiorcy: 68315.91 zł
+
+Obrót 41:
+  Suma w banku: 71315.91 zł
+  Zablokowana rezerwa: 2139.48 zł
+  Stan konta kredytobiorcy: 69176.43 zł
+
+Obrót 42:
+  Suma w banku: 72176.43 zł
+  Zablokowana rezerwa: 2165.29 zł
+  Stan konta kredytobiorcy: 70011.14 zł
+
+Obrót 43:
+  Suma w banku: 73011.14 zł
+  Zablokowana rezerwa: 2190.33 zł
+  Stan konta kredytobiorcy: 70820.80 zł
+
+Obrót 44:
+  Suma w banku: 73820.80 zł
+  Zablokowana rezerwa: 2214.62 zł
+  Stan konta kredytobiorcy: 71606.18 zł
+
+Obrót 45:
+  Suma w banku: 74606.18 zł
+  Zablokowana rezerwa: 2238.19 zł
+  Stan konta kredytobiorcy: 72367.99 zł
+
+Obrót 46:
+  Suma w banku: 75367.99 zł
+  Zablokowana rezerwa: 2261.04 zł
+  Stan konta kredytobiorcy: 73106.95 zł
+
+Obrót 47:
+  Suma w banku: 76106.95 zł
+  Zablokowana rezerwa: 2283.21 zł
+  Stan konta kredytobiorcy: 73823.75 zł
+
+Obrót 48:
+  Suma w banku: 76823.75 zł
+  Zablokowana rezerwa: 2304.71 zł
+  Stan konta kredytobiorcy: 74519.03 zł
+
+Obrót 49:
+  Suma w banku: 77519.03 zł
+  Zablokowana rezerwa: 2325.57 zł
+  Stan konta kredytobiorcy: 75193.46 zł
+
+Obrót 50:
+  Suma w banku: 78193.46 zł
+  Zablokowana rezerwa: 2345.80 zł
+  Stan konta kredytobiorcy: 75847.66 zł
+
+Obrót 51:
+  Suma w banku: 78847.66 zł
+  Zablokowana rezerwa: 2365.43 zł
+  Stan konta kredytobiorcy: 76482.23 zł
+
+Obrót 52:
+  Suma w banku: 79482.23 zł
+  Zablokowana rezerwa: 2384.47 zł
+  Stan konta kredytobiorcy: 77097.76 zł
+
+Obrót 53:
+  Suma w banku: 80097.76 zł
+  Zablokowana rezerwa: 2402.93 zł
+  Stan konta kredytobiorcy: 77694.83 zł
+
+Obrót 54:
+  Suma w banku: 80694.83 zł
+  Zablokowana rezerwa: 2420.84 zł
+  Stan konta kredytobiorcy: 78273.98 zł
+
+Obrót 55:
+  Suma w banku: 81273.98 zł
+  Zablokowana rezerwa: 2438.22 zł
+  Stan konta kredytobiorcy: 78835.76 zł
+
+Obrót 56:
+  Suma w banku: 81835.76 zł
+  Zablokowana rezerwa: 2455.07 zł
+  Stan konta kredytobiorcy: 79380.69 zł
+
+Obrót 57:
+  Suma w banku: 82380.69 zł
+  Zablokowana rezerwa: 2471.42 zł
+  Stan konta kredytobiorcy: 79909.27 zł
+
+Obrót 58:
+  Suma w banku: 82909.27 zł
+  Zablokowana rezerwa: 2487.28 zł
+  Stan konta kredytobiorcy: 80421.99 zł
+
+Obrót 59:
+  Suma w banku: 83421.99 zł
+  Zablokowana rezerwa: 2502.66 zł
+  Stan konta kredytobiorcy: 80919.33 zł
+
+Obrót 60:
+  Suma w banku: 83919.33 zł
+  Zablokowana rezerwa: 2517.58 zł
+  Stan konta kredytobiorcy: 81401.75 zł
+
+Obrót 61:
+  Suma w banku: 84401.75 zł
+  Zablokowana rezerwa: 2532.05 zł
+  Stan konta kredytobiorcy: 81869.70 zł
+
+Obrót 62:
+  Suma w banku: 84869.70 zł
+  Zablokowana rezerwa: 2546.09 zł
+  Stan konta kredytobiorcy: 82323.61 zł
+
+Obrót 63:
+  Suma w banku: 85323.61 zł
+  Zablokowana rezerwa: 2559.71 zł
+  Stan konta kredytobiorcy: 82763.90 zł
+
+Obrót 64:
+  Suma w banku: 85763.90 zł
+  Zablokowana rezerwa: 2572.92 zł
+  Stan konta kredytobiorcy: 83190.98 zł
+
+Obrót 65:
+  Suma w banku: 86190.98 zł
+  Zablokowana rezerwa: 2585.73 zł
+  Stan konta kredytobiorcy: 83605.25 zł
+
+Obrót 66:
+  Suma w banku: 86605.25 zł
+  Zablokowana rezerwa: 2598.16 zł
+  Stan konta kredytobiorcy: 84007.10 zł
+
+Obrót 67:
+  Suma w banku: 87007.10 zł
+  Zablokowana rezerwa: 2610.21 zł
+  Stan konta kredytobiorcy: 84396.88 zł
+
+Obrót 68:
+  Suma w banku: 87396.88 zł
+  Zablokowana rezerwa: 2621.91 zł
+  Stan konta kredytobiorcy: 84774.98 zł
+
+Obrót 69:
+  Suma w banku: 87774.98 zł
+  Zablokowana rezerwa: 2633.25 zł
+  Stan konta kredytobiorcy: 85141.73 zł
+
+Obrót 70:
+  Suma w banku: 88141.73 zł
+  Zablokowana rezerwa: 2644.25 zł
+  Stan konta kredytobiorcy: 85497.48 zł
+
+Obrót 71:
+  Suma w banku: 88497.48 zł
+  Zablokowana rezerwa: 2654.92 zł
+  Stan konta kredytobiorcy: 85842.55 zł
+
+Obrót 72:
+  Suma w banku: 88842.55 zł
+  Zablokowana rezerwa: 2665.28 zł
+  Stan konta kredytobiorcy: 86177.28 zł
+
+Obrót 73:
+  Suma w banku: 89177.28 zł
+  Zablokowana rezerwa: 2675.32 zł
+  Stan konta kredytobiorcy: 86501.96 zł
+
+Obrót 74:
+  Suma w banku: 89501.96 zł
+  Zablokowana rezerwa: 2685.06 zł
+  Stan konta kredytobiorcy: 86816.90 zł
+
+Obrót 75:
+  Suma w banku: 89816.90 zł
+  Zablokowana rezerwa: 2694.51 zł
+  Stan konta kredytobiorcy: 87122.39 zł
+
+Obrót 76:
+  Suma w banku: 90122.39 zł
+  Zablokowana rezerwa: 2703.67 zł
+  Stan konta kredytobiorcy: 87418.72 zł
+
+Obrót 77:
+  Suma w banku: 90418.72 zł
+  Zablokowana rezerwa: 2712.56 zł
+  Stan konta kredytobiorcy: 87706.16 zł
+
+Obrót 78:
+  Suma w banku: 90706.16 zł
+  Zablokowana rezerwa: 2721.18 zł
+  Stan konta kredytobiorcy: 87984.97 zł
+
+Obrót 79:
+  Suma w banku: 90984.97 zł
+  Zablokowana rezerwa: 2729.55 zł
+  Stan konta kredytobiorcy: 88255.42 zł
+
+Obrót 80:
+  Suma w banku: 91255.42 zł
+  Zablokowana rezerwa: 2737.66 zł
+  Stan konta kredytobiorcy: 88517.76 zł
+
+Obrót 81:
+  Suma w banku: 91517.76 zł
+  Zablokowana rezerwa: 2745.53 zł
+  Stan konta kredytobiorcy: 88772.23 zł
+
+Obrót 82:
+  Suma w banku: 91772.23 zł
+  Zablokowana rezerwa: 2753.17 zł
+  Stan konta kredytobiorcy: 89019.06 zł
+
+Obrót 83:
+  Suma w banku: 92019.06 zł
+  Zablokowana rezerwa: 2760.57 zł
+  Stan konta kredytobiorcy: 89258.49 zł
+
+Obrót 84:
+  Suma w banku: 92258.49 zł
+  Zablokowana rezerwa: 2767.75 zł
+  Stan konta kredytobiorcy: 89490.74 zł
+
+Obrót 85:
+  Suma w banku: 92490.74 zł
+  Zablokowana rezerwa: 2774.72 zł
+  Stan konta kredytobiorcy: 89716.01 zł
+
+Obrót 86:
+  Suma w banku: 92716.01 zł
+  Zablokowana rezerwa: 2781.48 zł
+  Stan konta kredytobiorcy: 89934.53 zł
+
+Obrót 87:
+  Suma w banku: 92934.53 zł
+  Zablokowana rezerwa: 2788.04 zł
+  Stan konta kredytobiorcy: 90146.50 zł
+
+Obrót 88:
+  Suma w banku: 93146.50 zł
+  Zablokowana rezerwa: 2794.39 zł
+  Stan konta kredytobiorcy: 90352.10 zł
+
+Obrót 89:
+  Suma w banku: 93352.10 zł
+  Zablokowana rezerwa: 2800.56 zł
+  Stan konta kredytobiorcy: 90551.54 zł
+
+Obrót 90:
+  Suma w banku: 93551.54 zł
+  Zablokowana rezerwa: 2806.55 zł
+  Stan konta kredytobiorcy: 90744.99 zł
+
+Obrót 91:
+  Suma w banku: 93744.99 zł
+  Zablokowana rezerwa: 2812.35 zł
+  Stan konta kredytobiorcy: 90932.64 zł
+
+Obrót 92:
+  Suma w banku: 93932.64 zł
+  Zablokowana rezerwa: 2817.98 zł
+  Stan konta kredytobiorcy: 91114.66 zł
+
+Obrót 93:
+  Suma w banku: 94114.66 zł
+  Zablokowana rezerwa: 2823.44 zł
+  Stan konta kredytobiorcy: 91291.22 zł
+
+Obrót 94:
+  Suma w banku: 94291.22 zł
+  Zablokowana rezerwa: 2828.74 zł
+  Stan konta kredytobiorcy: 91462.49 zł
+
+Obrót 95:
+  Suma w banku: 94462.49 zł
+  Zablokowana rezerwa: 2833.87 zł
+  Stan konta kredytobiorcy: 91628.61 zł
+
+Obrót 96:
+  Suma w banku: 94628.61 zł
+  Zablokowana rezerwa: 2838.86 zł
+  Stan konta kredytobiorcy: 91789.75 zł
+
+Obrót 97:
+  Suma w banku: 94789.75 zł
+  Zablokowana rezerwa: 2843.69 zł
+  Stan konta kredytobiorcy: 91946.06 zł
+
+Obrót 98:
+  Suma w banku: 94946.06 zł
+  Zablokowana rezerwa: 2848.38 zł
+  Stan konta kredytobiorcy: 92097.68 zł
+
+Obrót 99:
+  Suma w banku: 95097.68 zł
+  Zablokowana rezerwa: 2852.93 zł
+  Stan konta kredytobiorcy: 92244.75 zł
+
+Obrót 100:
+  Suma w banku: 95244.75 zł
+  Zablokowana rezerwa: 2857.34 zł
+  Stan konta kredytobiorcy: 92387.41 zł
+
+Obrót 101:
+  Suma w banku: 95387.41 zł
+  Zablokowana rezerwa: 2861.62 zł
+  Stan konta kredytobiorcy: 92525.78 zł
+
+Obrót 102:
+  Suma w banku: 95525.78 zł
+  Zablokowana rezerwa: 2865.77 zł
+  Stan konta kredytobiorcy: 92660.01 zł
+
+Obrót 103:
+  Suma w banku: 95660.01 zł
+  Zablokowana rezerwa: 2869.80 zł
+  Stan konta kredytobiorcy: 92790.21 zł
+
+Obrót 104:
+  Suma w banku: 95790.21 zł
+  Zablokowana rezerwa: 2873.71 zł
+  Stan konta kredytobiorcy: 92916.50 zł
+
+Obrót 105:
+  Suma w banku: 95916.50 zł
+  Zablokowana rezerwa: 2877.50 zł
+  Stan konta kredytobiorcy: 93039.01 zł
+
+Obrót 106:
+  Suma w banku: 96039.01 zł
+  Zablokowana rezerwa: 2881.17 zł
+  Stan konta kredytobiorcy: 93157.84 zł
+
+Obrót 107:
+  Suma w banku: 96157.84 zł
+  Zablokowana rezerwa: 2884.74 zł
+  Stan konta kredytobiorcy: 93273.10 zł
+
+Obrót 108:
+  Suma w banku: 96273.10 zł
+  Zablokowana rezerwa: 2888.19 zł
+  Stan konta kredytobiorcy: 93384.91 zł
+
+Obrót 109:
+  Suma w banku: 96384.91 zł
+  Zablokowana rezerwa: 2891.55 zł
+  Stan konta kredytobiorcy: 93493.36 zł
+
+Obrót 110:
+  Suma w banku: 96493.36 zł
+  Zablokowana rezerwa: 2894.80 zł
+  Stan konta kredytobiorcy: 93598.56 zł
+
+Obrót 111:
+  Suma w banku: 96598.56 zł
+  Zablokowana rezerwa: 2897.96 zł
+  Stan konta kredytobiorcy: 93700.61 zł
+
+Obrót 112:
+  Suma w banku: 96700.61 zł
+  Zablokowana rezerwa: 2901.02 zł
+  Stan konta kredytobiorcy: 93799.59 zł
+
+Obrót 113:
+  Suma w banku: 96799.59 zł
+  Zablokowana rezerwa: 2903.99 zł
+  Stan konta kredytobiorcy: 93895.60 zł
+
+Obrót 114:
+  Suma w banku: 96895.60 zł
+  Zablokowana rezerwa: 2906.87 zł
+  Stan konta kredytobiorcy: 93988.73 zł
+
+Obrót 115:
+  Suma w banku: 96988.73 zł
+  Zablokowana rezerwa: 2909.66 zł
+  Stan konta kredytobiorcy: 94079.07 zł
+
+Obrót 116:
+  Suma w banku: 97079.07 zł
+  Zablokowana rezerwa: 2912.37 zł
+  Stan konta kredytobiorcy: 94166.70 zł
+
+Obrót 117:
+  Suma w banku: 97166.70 zł
+  Zablokowana rezerwa: 2915.00 zł
+  Stan konta kredytobiorcy: 94251.70 zł
+
+Obrót 118:
+  Suma w banku: 97251.70 zł
+  Zablokowana rezerwa: 2917.55 zł
+  Stan konta kredytobiorcy: 94334.15 zł
+
+Obrót 119:
+  Suma w banku: 97334.15 zł
+  Zablokowana rezerwa: 2920.02 zł
+  Stan konta kredytobiorcy: 94414.12 zł
+
+Obrót 120:
+  Suma w banku: 97414.12 zł
+  Zablokowana rezerwa: 2922.42 zł
+  Stan konta kredytobiorcy: 94491.70 zł
+
+Obrót 121:
+  Suma w banku: 97491.70 zł
+  Zablokowana rezerwa: 2924.75 zł
+  Stan konta kredytobiorcy: 94566.95 zł
+
+Obrót 122:
+  Suma w banku: 97566.95 zł
+  Zablokowana rezerwa: 2927.01 zł
+  Stan konta kredytobiorcy: 94639.94 zł
+
+Obrót 123:
+  Suma w banku: 97639.94 zł
+  Zablokowana rezerwa: 2929.20 zł
+  Stan konta kredytobiorcy: 94710.74 zł
+
+Obrót 124:
+  Suma w banku: 97710.74 zł
+  Zablokowana rezerwa: 2931.32 zł
+  Stan konta kredytobiorcy: 94779.42 zł
+
+Obrót 125:
+  Suma w banku: 97779.42 zł
+  Zablokowana rezerwa: 2933.38 zł
+  Stan konta kredytobiorcy: 94846.04 zł
+
+Obrót 126:
+  Suma w banku: 97846.04 zł
+  Zablokowana rezerwa: 2935.38 zł
+  Stan konta kredytobiorcy: 94910.65 zł
+
+Obrót 127:
+  Suma w banku: 97910.65 zł
+  Zablokowana rezerwa: 2937.32 zł
+  Stan konta kredytobiorcy: 94973.33 zł
+
+Obrót 128:
+  Suma w banku: 97973.33 zł
+  Zablokowana rezerwa: 2939.20 zł
+  Stan konta kredytobiorcy: 95034.13 zł
+
+Obrót 129:
+  Suma w banku: 98034.13 zł
+  Zablokowana rezerwa: 2941.02 zł
+  Stan konta kredytobiorcy: 95093.11 zł
+
+Obrót 130:
+  Suma w banku: 98093.11 zł
+  Zablokowana rezerwa: 2942.79 zł
+  Stan konta kredytobiorcy: 95150.32 zł
+
+Obrót 131:
+  Suma w banku: 98150.32 zł
+  Zablokowana rezerwa: 2944.51 zł
+  Stan konta kredytobiorcy: 95205.81 zł
+
+Obrót 132:
+  Suma w banku: 98205.81 zł
+  Zablokowana rezerwa: 2946.17 zł
+  Stan konta kredytobiorcy: 95259.63 zł
+
+Obrót 133:
+  Suma w banku: 98259.63 zł
+  Zablokowana rezerwa: 2947.79 zł
+  Stan konta kredytobiorcy: 95311.84 zł
+
+Obrót 134:
+  Suma w banku: 98311.84 zł
+  Zablokowana rezerwa: 2949.36 zł
+  Stan konta kredytobiorcy: 95362.49 zł
+
+Obrót 135:
+  Suma w banku: 98362.49 zł
+  Zablokowana rezerwa: 2950.87 zł
+  Stan konta kredytobiorcy: 95411.61 zł
+
+Obrót 136:
+  Suma w banku: 98411.61 zł
+  Zablokowana rezerwa: 2952.35 zł
+  Stan konta kredytobiorcy: 95459.27 zł
+
+Obrót 137:
+  Suma w banku: 98459.27 zł
+  Zablokowana rezerwa: 2953.78 zł
+  Stan konta kredytobiorcy: 95505.49 zł
+
+Obrót 138:
+  Suma w banku: 98505.49 zł
+  Zablokowana rezerwa: 2955.16 zł
+  Stan konta kredytobiorcy: 95550.32 zł
+
+Obrót 139:
+  Suma w banku: 98550.32 zł
+  Zablokowana rezerwa: 2956.51 zł
+  Stan konta kredytobiorcy: 95593.81 zł
+
+Obrót 140:
+  Suma w banku: 98593.81 zł
+  Zablokowana rezerwa: 2957.81 zł
+  Stan konta kredytobiorcy: 95636.00 zł
+
+Obrót 141:
+  Suma w banku: 98636.00 zł
+  Zablokowana rezerwa: 2959.08 zł
+  Stan konta kredytobiorcy: 95676.92 zł
+
+Obrót 142:
+  Suma w banku: 98676.92 zł
+  Zablokowana rezerwa: 2960.31 zł
+  Stan konta kredytobiorcy: 95716.61 zł
+
+Obrót 143:
+  Suma w banku: 98716.61 zł
+  Zablokowana rezerwa: 2961.50 zł
+  Stan konta kredytobiorcy: 95755.11 zł
+
+Obrót 144:
+  Suma w banku: 98755.11 zł
+  Zablokowana rezerwa: 2962.65 zł
+  Stan konta kredytobiorcy: 95792.46 zł
+
+Obrót 145:
+  Suma w banku: 98792.46 zł
+  Zablokowana rezerwa: 2963.77 zł
+  Stan konta kredytobiorcy: 95828.69 zł
+
+Obrót 146:
+  Suma w banku: 98828.69 zł
+  Zablokowana rezerwa: 2964.86 zł
+  Stan konta kredytobiorcy: 95863.83 zł
+
+Obrót 147:
+  Suma w banku: 98863.83 zł
+  Zablokowana rezerwa: 2965.91 zł
+  Stan konta kredytobiorcy: 95897.91 zł
+
+Obrót 148:
+  Suma w banku: 98897.91 zł
+  Zablokowana rezerwa: 2966.94 zł
+  Stan konta kredytobiorcy: 95930.97 zł
+
+Obrót 149:
+  Suma w banku: 98930.97 zł
+  Zablokowana rezerwa: 2967.93 zł
+  Stan konta kredytobiorcy: 95963.04 zł
+
+Obrót 150:
+  Suma w banku: 98963.04 zł
+  Zablokowana rezerwa: 2968.89 zł
+  Stan konta kredytobiorcy: 95994.15 zł
+
+Obrót 151:
+  Suma w banku: 98994.15 zł
+  Zablokowana rezerwa: 2969.82 zł
+  Stan konta kredytobiorcy: 96024.33 zł
+
+Obrót 152:
+  Suma w banku: 99024.33 zł
+  Zablokowana rezerwa: 2970.73 zł
+  Stan konta kredytobiorcy: 96053.60 zł
+
+Obrót 153:
+  Suma w banku: 99053.60 zł
+  Zablokowana rezerwa: 2971.61 zł
+  Stan konta kredytobiorcy: 96081.99 zł
+
+Obrót 154:
+  Suma w banku: 99081.99 zł
+  Zablokowana rezerwa: 2972.46 zł
+  Stan konta kredytobiorcy: 96109.53 zł
+
+Obrót 155:
+  Suma w banku: 99109.53 zł
+  Zablokowana rezerwa: 2973.29 zł
+  Stan konta kredytobiorcy: 96136.25 zł
+
+Obrót 156:
+  Suma w banku: 99136.25 zł
+  Zablokowana rezerwa: 2974.09 zł
+  Stan konta kredytobiorcy: 96162.16 zł
+
+Obrót 157:
+  Suma w banku: 99162.16 zł
+  Zablokowana rezerwa: 2974.86 zł
+  Stan konta kredytobiorcy: 96187.29 zł
+
+Obrót 158:
+  Suma w banku: 99187.29 zł
+  Zablokowana rezerwa: 2975.62 zł
+  Stan konta kredytobiorcy: 96211.67 zł
+
+Obrót 159:
+  Suma w banku: 99211.67 zł
+  Zablokowana rezerwa: 2976.35 zł
+  Stan konta kredytobiorcy: 96235.32 zł
+
+Obrót 160:
+  Suma w banku: 99235.32 zł
+  Zablokowana rezerwa: 2977.06 zł
+  Stan konta kredytobiorcy: 96258.26 zł
+
+Obrót 161:
+  Suma w banku: 99258.26 zł
+  Zablokowana rezerwa: 2977.75 zł
+  Stan konta kredytobiorcy: 96280.52 zł
+
+Obrót 162:
+  Suma w banku: 99280.52 zł
+  Zablokowana rezerwa: 2978.42 zł
+  Stan konta kredytobiorcy: 96302.10 zł
+
+Obrót 163:
+  Suma w banku: 99302.10 zł
+  Zablokowana rezerwa: 2979.06 zł
+  Stan konta kredytobiorcy: 96323.04 zł
+
+Obrót 164:
+  Suma w banku: 99323.04 zł
+  Zablokowana rezerwa: 2979.69 zł
+  Stan konta kredytobiorcy: 96343.35 zł
+
+Obrót 165:
+  Suma w banku: 99343.35 zł
+  Zablokowana rezerwa: 2980.30 zł
+  Stan konta kredytobiorcy: 96363.05 zł
+
+Obrót 166:
+  Suma w banku: 99363.05 zł
+  Zablokowana rezerwa: 2980.89 zł
+  Stan konta kredytobiorcy: 96382.15 zł
+
+Obrót 167:
+  Suma w banku: 99382.15 zł
+  Zablokowana rezerwa: 2981.46 zł
+  Stan konta kredytobiorcy: 96400.69 zł
+
+Obrót 168:
+  Suma w banku: 99400.69 zł
+  Zablokowana rezerwa: 2982.02 zł
+  Stan konta kredytobiorcy: 96418.67 zł
+
+Obrót 169:
+  Suma w banku: 99418.67 zł
+  Zablokowana rezerwa: 2982.56 zł
+  Stan konta kredytobiorcy: 96436.11 zł
+
+Obrót 170:
+  Suma w banku: 99436.11 zł
+  Zablokowana rezerwa: 2983.08 zł
+  Stan konta kredytobiorcy: 96453.03 zł
+
+Obrót 171:
+  Suma w banku: 99453.03 zł
+  Zablokowana rezerwa: 2983.59 zł
+  Stan konta kredytobiorcy: 96469.44 zł
+
+Obrót 172:
+  Suma w banku: 99469.44 zł
+  Zablokowana rezerwa: 2984.08 zł
+  Stan konta kredytobiorcy: 96485.35 zł
+
+Obrót 173:
+  Suma w banku: 99485.35 zł
+  Zablokowana rezerwa: 2984.56 zł
+  Stan konta kredytobiorcy: 96500.79 zł
+
+Obrót 174:
+  Suma w banku: 99500.79 zł
+  Zablokowana rezerwa: 2985.02 zł
+  Stan konta kredytobiorcy: 96515.77 zł
+
+Obrót 175:
+  Suma w banku: 99515.77 zł
+  Zablokowana rezerwa: 2985.47 zł
+  Stan konta kredytobiorcy: 96530.29 zł
+
+Obrót 176:
+  Suma w banku: 99530.29 zł
+  Zablokowana rezerwa: 2985.91 zł
+  Stan konta kredytobiorcy: 96544.39 zł
+
+Obrót 177:
+  Suma w banku: 99544.39 zł
+  Zablokowana rezerwa: 2986.33 zł
+  Stan konta kredytobiorcy: 96558.05 zł
+
+Obrót 178:
+  Suma w banku: 99558.05 zł
+  Zablokowana rezerwa: 2986.74 zł
+  Stan konta kredytobiorcy: 96571.31 zł
+
+Obrót 179:
+  Suma w banku: 99571.31 zł
+  Zablokowana rezerwa: 2987.14 zł
+  Stan konta kredytobiorcy: 96584.17 zł
+
+Obrót 180:
+  Suma w banku: 99584.17 zł
+  Zablokowana rezerwa: 2987.53 zł
+  Stan konta kredytobiorcy: 96596.65 zł
+
+Obrót 181:
+  Suma w banku: 99596.65 zł
+  Zablokowana rezerwa: 2987.90 zł
+  Stan konta kredytobiorcy: 96608.75 zł
+
+Obrót 182:
+  Suma w banku: 99608.75 zł
+  Zablokowana rezerwa: 2988.26 zł
+  Stan konta kredytobiorcy: 96620.49 zł
+
+Obrót 183:
+  Suma w banku: 99620.49 zł
+  Zablokowana rezerwa: 2988.61 zł
+  Stan konta kredytobiorcy: 96631.87 zł
+
+Obrót 184:
+  Suma w banku: 99631.87 zł
+  Zablokowana rezerwa: 2988.96 zł
+  Stan konta kredytobiorcy: 96642.92 zł
+
+Obrót 185:
+  Suma w banku: 99642.92 zł
+  Zablokowana rezerwa: 2989.29 zł
+  Stan konta kredytobiorcy: 96653.63 zł
+
+Obrót 186:
+  Suma w banku: 99653.63 zł
+  Zablokowana rezerwa: 2989.61 zł
+  Stan konta kredytobiorcy: 96664.02 zł
+
+Obrót 187:
+  Suma w banku: 99664.02 zł
+  Zablokowana rezerwa: 2989.92 zł
+  Stan konta kredytobiorcy: 96674.10 zł
+
+Obrót 188:
+  Suma w banku: 99674.10 zł
+  Zablokowana rezerwa: 2990.22 zł
+  Stan konta kredytobiorcy: 96683.88 zł
+
+Obrót 189:
+  Suma w banku: 99683.88 zł
+  Zablokowana rezerwa: 2990.52 zł
+  Stan konta kredytobiorcy: 96693.36 zł
+
+Obrót 190:
+  Suma w banku: 99693.36 zł
+  Zablokowana rezerwa: 2990.80 zł
+  Stan konta kredytobiorcy: 96702.56 zł
+
+Obrót 191:
+  Suma w banku: 99702.56 zł
+  Zablokowana rezerwa: 2991.08 zł
+  Stan konta kredytobiorcy: 96711.48 zł
+
+Obrót 192:
+  Suma w banku: 99711.48 zł
+  Zablokowana rezerwa: 2991.34 zł
+  Stan konta kredytobiorcy: 96720.14 zł
+
+Obrót 193:
+  Suma w banku: 99720.14 zł
+  Zablokowana rezerwa: 2991.60 zł
+  Stan konta kredytobiorcy: 96728.53 zł
+
+Obrót 194:
+  Suma w banku: 99728.53 zł
+  Zablokowana rezerwa: 2991.86 zł
+  Stan konta kredytobiorcy: 96736.68 zł
+
+Obrót 195:
+  Suma w banku: 99736.68 zł
+  Zablokowana rezerwa: 2992.10 zł
+  Stan konta kredytobiorcy: 96744.58 zł
+
+Obrót 196:
+  Suma w banku: 99744.58 zł
+  Zablokowana rezerwa: 2992.34 zł
+  Stan konta kredytobiorcy: 96752.24 zł
+
+Obrót 197:
+  Suma w banku: 99752.24 zł
+  Zablokowana rezerwa: 2992.57 zł
+  Stan konta kredytobiorcy: 96759.67 zł
+
+Obrót 198:
+  Suma w banku: 99759.67 zł
+  Zablokowana rezerwa: 2992.79 zł
+  Stan konta kredytobiorcy: 96766.88 zł
+
+Obrót 199:
+  Suma w banku: 99766.88 zł
+  Zablokowana rezerwa: 2993.01 zł
+  Stan konta kredytobiorcy: 96773.88 zł
+
+Obrót 200:
+  Suma w banku: 99773.88 zł
+  Zablokowana rezerwa: 2993.22 zł
+  Stan konta kredytobiorcy: 96780.66 zł
+
+Obrót 201:
+  Suma w banku: 99780.66 zł
+  Zablokowana rezerwa: 2993.42 zł
+  Stan konta kredytobiorcy: 96787.24 zł
+
+Obrót 202:
+  Suma w banku: 99787.24 zł
+  Zablokowana rezerwa: 2993.62 zł
+  Stan konta kredytobiorcy: 96793.62 zł
+
+Obrót 203:
+  Suma w banku: 99793.62 zł
+  Zablokowana rezerwa: 2993.81 zł
+  Stan konta kredytobiorcy: 96799.81 zł
+
+Obrót 204:
+  Suma w banku: 99799.81 zł
+  Zablokowana rezerwa: 2993.99 zł
+  Stan konta kredytobiorcy: 96805.82 zł
+
+Obrót 205:
+  Suma w banku: 99805.82 zł
+  Zablokowana rezerwa: 2994.17 zł
+  Stan konta kredytobiorcy: 96811.64 zł
+
+Obrót 206:
+  Suma w banku: 99811.64 zł
+  Zablokowana rezerwa: 2994.35 zł
+  Stan konta kredytobiorcy: 96817.30 zł
+
+Obrót 207:
+  Suma w banku: 99817.30 zł
+  Zablokowana rezerwa: 2994.52 zł
+  Stan konta kredytobiorcy: 96822.78 zł
+
+Obrót 208:
+  Suma w banku: 99822.78 zł
+  Zablokowana rezerwa: 2994.68 zł
+  Stan konta kredytobiorcy: 96828.09 zł
+
+Obrót 209:
+  Suma w banku: 99828.09 zł
+  Zablokowana rezerwa: 2994.84 zł
+  Stan konta kredytobiorcy: 96833.25 zł
+
+Obrót 210:
+  Suma w banku: 99833.25 zł
+  Zablokowana rezerwa: 2995.00 zł
+  Stan konta kredytobiorcy: 96838.25 zł
+
+Obrót 211:
+  Suma w banku: 99838.25 zł
+  Zablokowana rezerwa: 2995.15 zł
+  Stan konta kredytobiorcy: 96843.11 zł
+
+Obrót 212:
+  Suma w banku: 99843.11 zł
+  Zablokowana rezerwa: 2995.29 zł
+  Stan konta kredytobiorcy: 96847.81 zł
+
+Obrót 213:
+  Suma w banku: 99847.81 zł
+  Zablokowana rezerwa: 2995.43 zł
+  Stan konta kredytobiorcy: 96852.38 zł
+
+Obrót 214:
+  Suma w banku: 99852.38 zł
+  Zablokowana rezerwa: 2995.57 zł
+  Stan konta kredytobiorcy: 96856.81 zł
+
+Obrót 215:
+  Suma w banku: 99856.81 zł
+  Zablokowana rezerwa: 2995.70 zł
+  Stan konta kredytobiorcy: 96861.10 zł
+
+Obrót 216:
+  Suma w banku: 99861.10 zł
+  Zablokowana rezerwa: 2995.83 zł
+  Stan konta kredytobiorcy: 96865.27 zł
+
+Obrót 217:
+  Suma w banku: 99865.27 zł
+  Zablokowana rezerwa: 2995.96 zł
+  Stan konta kredytobiorcy: 96869.31 zł
+
+Obrót 218:
+  Suma w banku: 99869.31 zł
+  Zablokowana rezerwa: 2996.08 zł
+  Stan konta kredytobiorcy: 96873.23 zł
+
+Obrót 219:
+  Suma w banku: 99873.23 zł
+  Zablokowana rezerwa: 2996.20 zł
+  Stan konta kredytobiorcy: 96877.03 zł
+
+Obrót 220:
+  Suma w banku: 99877.03 zł
+  Zablokowana rezerwa: 2996.31 zł
+  Stan konta kredytobiorcy: 96880.72 zł
+
+Obrót 221:
+  Suma w banku: 99880.72 zł
+  Zablokowana rezerwa: 2996.42 zł
+  Stan konta kredytobiorcy: 96884.30 zł
+
+Obrót 222:
+  Suma w banku: 99884.30 zł
+  Zablokowana rezerwa: 2996.53 zł
+  Stan konta kredytobiorcy: 96887.77 zł
+
+Obrót 223:
+  Suma w banku: 99887.77 zł
+  Zablokowana rezerwa: 2996.63 zł
+  Stan konta kredytobiorcy: 96891.14 zł
+
+Obrót 224:
+  Suma w banku: 99891.14 zł
+  Zablokowana rezerwa: 2996.73 zł
+  Stan konta kredytobiorcy: 96894.41 zł
+
+Obrót 225:
+  Suma w banku: 99894.41 zł
+  Zablokowana rezerwa: 2996.83 zł
+  Stan konta kredytobiorcy: 96897.57 zł
+
+Obrót 226:
+  Suma w banku: 99897.57 zł
+  Zablokowana rezerwa: 2996.93 zł
+  Stan konta kredytobiorcy: 96900.65 zł
+
+Obrót 227:
+  Suma w banku: 99900.65 zł
+  Zablokowana rezerwa: 2997.02 zł
+  Stan konta kredytobiorcy: 96903.63 zł
+
+Obrót 228:
+  Suma w banku: 99903.63 zł
+  Zablokowana rezerwa: 2997.11 zł
+  Stan konta kredytobiorcy: 96906.52 zł
+
+Obrót 229:
+  Suma w banku: 99906.52 zł
+  Zablokowana rezerwa: 2997.20 zł
+  Stan konta kredytobiorcy: 96909.32 zł
+
+Obrót 230:
+  Suma w banku: 99909.32 zł
+  Zablokowana rezerwa: 2997.28 zł
+  Stan konta kredytobiorcy: 96912.04 zł
+
+Obrót 231:
+  Suma w banku: 99912.04 zł
+  Zablokowana rezerwa: 2997.36 zł
+  Stan konta kredytobiorcy: 96914.68 zł
+
+Obrót 232:
+  Suma w banku: 99914.68 zł
+  Zablokowana rezerwa: 2997.44 zł
+  Stan konta kredytobiorcy: 96917.24 zł
+
+Obrót 233:
+  Suma w banku: 99917.24 zł
+  Zablokowana rezerwa: 2997.52 zł
+  Stan konta kredytobiorcy: 96919.72 zł
+
+Obrót 234:
+  Suma w banku: 99919.72 zł
+  Zablokowana rezerwa: 2997.59 zł
+  Stan konta kredytobiorcy: 96922.13 zł
+
+Obrót 235:
+  Suma w banku: 99922.13 zł
+  Zablokowana rezerwa: 2997.66 zł
+  Stan konta kredytobiorcy: 96924.47 zł
+
+Obrót 236:
+  Suma w banku: 99924.47 zł
+  Zablokowana rezerwa: 2997.73 zł
+  Stan konta kredytobiorcy: 96926.73 zł
+
+Obrót 237:
+  Suma w banku: 99926.73 zł
+  Zablokowana rezerwa: 2997.80 zł
+  Stan konta kredytobiorcy: 96928.93 zł
+
+Obrót 238:
+  Suma w banku: 99928.93 zł
+  Zablokowana rezerwa: 2997.87 zł
+  Stan konta kredytobiorcy: 96931.06 zł
+
+Obrót 239:
+  Suma w banku: 99931.06 zł
+  Zablokowana rezerwa: 2997.93 zł
+  Stan konta kredytobiorcy: 96933.13 zł
+
+Obrót 240:
+  Suma w banku: 99933.13 zł
+  Zablokowana rezerwa: 2997.99 zł
+  Stan konta kredytobiorcy: 96935.14 zł
+
+Obrót 241:
+  Suma w banku: 99935.14 zł
+  Zablokowana rezerwa: 2998.05 zł
+  Stan konta kredytobiorcy: 96937.08 zł
+
+Obrót 242:
+  Suma w banku: 99937.08 zł
+  Zablokowana rezerwa: 2998.11 zł
+  Stan konta kredytobiorcy: 96938.97 zł
+
+Obrót 243:
+  Suma w banku: 99938.97 zł
+  Zablokowana rezerwa: 2998.17 zł
+  Stan konta kredytobiorcy: 96940.80 zł
+
+Obrót 244:
+  Suma w banku: 99940.80 zł
+  Zablokowana rezerwa: 2998.22 zł
+  Stan konta kredytobiorcy: 96942.58 zł
+
+Obrót 245:
+  Suma w banku: 99942.58 zł
+  Zablokowana rezerwa: 2998.28 zł
+  Stan konta kredytobiorcy: 96944.30 zł
+
+Obrót 246:
+  Suma w banku: 99944.30 zł
+  Zablokowana rezerwa: 2998.33 zł
+  Stan konta kredytobiorcy: 96945.97 zł
+
+Obrót 247:
+  Suma w banku: 99945.97 zł
+  Zablokowana rezerwa: 2998.38 zł
+  Stan konta kredytobiorcy: 96947.59 zł
+
+Obrót 248:
+  Suma w banku: 99947.59 zł
+  Zablokowana rezerwa: 2998.43 zł
+  Stan konta kredytobiorcy: 96949.17 zł
+
+Obrót 249:
+  Suma w banku: 99949.17 zł
+  Zablokowana rezerwa: 2998.47 zł
+  Stan konta kredytobiorcy: 96950.69 zł
+
+Obrót 250:
+  Suma w banku: 99950.69 zł
+  Zablokowana rezerwa: 2998.52 zł
+  Stan konta kredytobiorcy: 96952.17 zł
+
+Obrót 251:
+  Suma w banku: 99952.17 zł
+  Zablokowana rezerwa: 2998.57 zł
+  Stan konta kredytobiorcy: 96953.60 zł
+
+Obrót 252:
+  Suma w banku: 99953.60 zł
+  Zablokowana rezerwa: 2998.61 zł
+  Stan konta kredytobiorcy: 96955.00 zł
+
+Obrót 253:
+  Suma w banku: 99955.00 zł
+  Zablokowana rezerwa: 2998.65 zł
+  Stan konta kredytobiorcy: 96956.35 zł
+
+Obrót 254:
+  Suma w banku: 99956.35 zł
+  Zablokowana rezerwa: 2998.69 zł
+  Stan konta kredytobiorcy: 96957.66 zł
+
+Obrót 255:
+  Suma w banku: 99957.66 zł
+  Zablokowana rezerwa: 2998.73 zł
+  Stan konta kredytobiorcy: 96958.93 zł
+
+Obrót 256:
+  Suma w banku: 99958.93 zł
+  Zablokowana rezerwa: 2998.77 zł
+  Stan konta kredytobiorcy: 96960.16 zł
+
+Obrót 257:
+  Suma w banku: 99960.16 zł
+  Zablokowana rezerwa: 2998.80 zł
+  Stan konta kredytobiorcy: 96961.35 zł
+
+Obrót 258:
+  Suma w banku: 99961.35 zł
+  Zablokowana rezerwa: 2998.84 zł
+  Stan konta kredytobiorcy: 96962.51 zł
+
+Obrót 259:
+  Suma w banku: 99962.51 zł
+  Zablokowana rezerwa: 2998.88 zł
+  Stan konta kredytobiorcy: 96963.64 zł
+
+Obrót 260:
+  Suma w banku: 99963.64 zł
+  Zablokowana rezerwa: 2998.91 zł
+  Stan konta kredytobiorcy: 96964.73 zł
+
+Obrót 261:
+  Suma w banku: 99964.73 zł
+  Zablokowana rezerwa: 2998.94 zł
+  Stan konta kredytobiorcy: 96965.79 zł
+
+Obrót 262:
+  Suma w banku: 99965.79 zł
+  Zablokowana rezerwa: 2998.97 zł
+  Stan konta kredytobiorcy: 96966.81 zł
+
+Obrót 263:
+  Suma w banku: 99966.81 zł
+  Zablokowana rezerwa: 2999.00 zł
+  Stan konta kredytobiorcy: 96967.81 zł
+
+Obrót 264:
+  Suma w banku: 99967.81 zł
+  Zablokowana rezerwa: 2999.03 zł
+  Stan konta kredytobiorcy: 96968.77 zł
+
+Obrót 265:
+  Suma w banku: 99968.77 zł
+  Zablokowana rezerwa: 2999.06 zł
+  Stan konta kredytobiorcy: 96969.71 zł
+
+Obrót 266:
+  Suma w banku: 99969.71 zł
+  Zablokowana rezerwa: 2999.09 zł
+  Stan konta kredytobiorcy: 96970.62 zł
+
+Obrót 267:
+  Suma w banku: 99970.62 zł
+  Zablokowana rezerwa: 2999.12 zł
+  Stan konta kredytobiorcy: 96971.50 zł
+
+Obrót 268:
+  Suma w banku: 99971.50 zł
+  Zablokowana rezerwa: 2999.15 zł
+  Stan konta kredytobiorcy: 96972.36 zł
+
+Obrót 269:
+  Suma w banku: 99972.36 zł
+  Zablokowana rezerwa: 2999.17 zł
+  Stan konta kredytobiorcy: 96973.19 zł
+
+Obrót 270:
+  Suma w banku: 99973.19 zł
+  Zablokowana rezerwa: 2999.20 zł
+  Stan konta kredytobiorcy: 96973.99 zł
+
+Obrót 271:
+  Suma w banku: 99973.99 zł
+  Zablokowana rezerwa: 2999.22 zł
+  Stan konta kredytobiorcy: 96974.77 zł
+
+Obrót 272:
+  Suma w banku: 99974.77 zł
+  Zablokowana rezerwa: 2999.24 zł
+  Stan konta kredytobiorcy: 96975.53 zł
+
+Obrót 273:
+  Suma w banku: 99975.53 zł
+  Zablokowana rezerwa: 2999.27 zł
+  Stan konta kredytobiorcy: 96976.26 zł
+
+Obrót 274:
+  Suma w banku: 99976.26 zł
+  Zablokowana rezerwa: 2999.29 zł
+  Stan konta kredytobiorcy: 96976.97 zł
+
+Obrót 275:
+  Suma w banku: 99976.97 zł
+  Zablokowana rezerwa: 2999.31 zł
+  Stan konta kredytobiorcy: 96977.66 zł
+
+Obrót 276:
+  Suma w banku: 99977.66 zł
+  Zablokowana rezerwa: 2999.33 zł
+  Stan konta kredytobiorcy: 96978.33 zł
+
+Obrót 277:
+  Suma w banku: 99978.33 zł
+  Zablokowana rezerwa: 2999.35 zł
+  Stan konta kredytobiorcy: 96978.98 zł
+
+Obrót 278:
+  Suma w banku: 99978.98 zł
+  Zablokowana rezerwa: 2999.37 zł
+  Stan konta kredytobiorcy: 96979.61 zł
+
+Obrót 279:
+  Suma w banku: 99979.61 zł
+  Zablokowana rezerwa: 2999.39 zł
+  Stan konta kredytobiorcy: 96980.23 zł
+
+Obrót 280:
+  Suma w banku: 99980.23 zł
+  Zablokowana rezerwa: 2999.41 zł
+  Stan konta kredytobiorcy: 96980.82 zł
+
+Obrót 281:
+  Suma w banku: 99980.82 zł
+  Zablokowana rezerwa: 2999.42 zł
+  Stan konta kredytobiorcy: 96981.40 zł
+
+Obrót 282:
+  Suma w banku: 99981.40 zł
+  Zablokowana rezerwa: 2999.44 zł
+  Stan konta kredytobiorcy: 96981.95 zł
+
+Obrót 283:
+  Suma w banku: 99981.95 zł
+  Zablokowana rezerwa: 2999.46 zł
+  Stan konta kredytobiorcy: 96982.49 zł
+
+Obrót 284:
+  Suma w banku: 99982.49 zł
+  Zablokowana rezerwa: 2999.47 zł
+  Stan konta kredytobiorcy: 96983.02 zł
+
+Obrót 285:
+  Suma w banku: 99983.02 zł
+  Zablokowana rezerwa: 2999.49 zł
+  Stan konta kredytobiorcy: 96983.53 zł
+
+Obrót 286:
+  Suma w banku: 99983.53 zł
+  Zablokowana rezerwa: 2999.51 zł
+  Stan konta kredytobiorcy: 96984.02 zł
+
+Obrót 287:
+  Suma w banku: 99984.02 zł
+  Zablokowana rezerwa: 2999.52 zł
+  Stan konta kredytobiorcy: 96984.50 zł
+
+Obrót 288:
+  Suma w banku: 99984.50 zł
+  Zablokowana rezerwa: 2999.54 zł
+  Stan konta kredytobiorcy: 96984.97 zł
+
+Obrót 289:
+  Suma w banku: 99984.97 zł
+  Zablokowana rezerwa: 2999.55 zł
+  Stan konta kredytobiorcy: 96985.42 zł
+
+Obrót 290:
+  Suma w banku: 99985.42 zł
+  Zablokowana rezerwa: 2999.56 zł
+  Stan konta kredytobiorcy: 96985.86 zł
+
+Obrót 291:
+  Suma w banku: 99985.86 zł
+  Zablokowana rezerwa: 2999.58 zł
+  Stan konta kredytobiorcy: 96986.28 zł
+
+Obrót 292:
+  Suma w banku: 99986.28 zł
+  Zablokowana rezerwa: 2999.59 zł
+  Stan konta kredytobiorcy: 96986.69 zł
+
+Obrót 293:
+  Suma w banku: 99986.69 zł
+  Zablokowana rezerwa: 2999.60 zł
+  Stan konta kredytobiorcy: 96987.09 zł
+
+Obrót 294:
+  Suma w banku: 99987.09 zł
+  Zablokowana rezerwa: 2999.61 zł
+  Stan konta kredytobiorcy: 96987.48 zł
+
+Obrót 295:
+  Suma w banku: 99987.48 zł
+  Zablokowana rezerwa: 2999.62 zł
+  Stan konta kredytobiorcy: 96987.85 zł
+
+Obrót 296:
+  Suma w banku: 99987.85 zł
+  Zablokowana rezerwa: 2999.64 zł
+  Stan konta kredytobiorcy: 96988.22 zł
+
+Obrót 297:
+  Suma w banku: 99988.22 zł
+  Zablokowana rezerwa: 2999.65 zł
+  Stan konta kredytobiorcy: 96988.57 zł
+
+Obrót 298:
+  Suma w banku: 99988.57 zł
+  Zablokowana rezerwa: 2999.66 zł
+  Stan konta kredytobiorcy: 96988.91 zł
+
+Obrót 299:
+  Suma w banku: 99988.91 zł
+  Zablokowana rezerwa: 2999.67 zł
+  Stan konta kredytobiorcy: 96989.25 zł
+
+Obrót 300:
+  Suma w banku: 99989.25 zł
+  Zablokowana rezerwa: 2999.68 zł
+  Stan konta kredytobiorcy: 96989.57 zł
+
+Obrót 301:
+  Suma w banku: 99989.57 zł
+  Zablokowana rezerwa: 2999.69 zł
+  Stan konta kredytobiorcy: 96989.88 zł
+
+Obrót 302:
+  Suma w banku: 99989.88 zł
+  Zablokowana rezerwa: 2999.70 zł
+  Stan konta kredytobiorcy: 96990.19 zł
+
+Obrót 303:
+  Suma w banku: 99990.19 zł
+  Zablokowana rezerwa: 2999.71 zł
+  Stan konta kredytobiorcy: 96990.48 zł
+
+Obrót 304:
+  Suma w banku: 99990.48 zł
+  Zablokowana rezerwa: 2999.71 zł
+  Stan konta kredytobiorcy: 96990.77 zł
+
+Obrót 305:
+  Suma w banku: 99990.77 zł
+  Zablokowana rezerwa: 2999.72 zł
+  Stan konta kredytobiorcy: 96991.04 zł
+
+Obrót 306:
+  Suma w banku: 99991.04 zł
+  Zablokowana rezerwa: 2999.73 zł
+  Stan konta kredytobiorcy: 96991.31 zł
+
+Obrót 307:
+  Suma w banku: 99991.31 zł
+  Zablokowana rezerwa: 2999.74 zł
+  Stan konta kredytobiorcy: 96991.57 zł
+
+Obrót 308:
+  Suma w banku: 99991.57 zł
+  Zablokowana rezerwa: 2999.75 zł
+  Stan konta kredytobiorcy: 96991.83 zł
+
+Obrót 309:
+  Suma w banku: 99991.83 zł
+  Zablokowana rezerwa: 2999.75 zł
+  Stan konta kredytobiorcy: 96992.07 zł
+
+Obrót 310:
+  Suma w banku: 99992.07 zł
+  Zablokowana rezerwa: 2999.76 zł
+  Stan konta kredytobiorcy: 96992.31 zł
+
+Obrót 311:
+  Suma w banku: 99992.31 zł
+  Zablokowana rezerwa: 2999.77 zł
+  Stan konta kredytobiorcy: 96992.54 zł
+
+Obrót 312:
+  Suma w banku: 99992.54 zł
+  Zablokowana rezerwa: 2999.78 zł
+  Stan konta kredytobiorcy: 96992.76 zł
+
+Obrót 313:
+  Suma w banku: 99992.76 zł
+  Zablokowana rezerwa: 2999.78 zł
+  Stan konta kredytobiorcy: 96992.98 zł
+
+Obrót 314:
+  Suma w banku: 99992.98 zł
+  Zablokowana rezerwa: 2999.79 zł
+  Stan konta kredytobiorcy: 96993.19 zł
+
+Obrót 315:
+  Suma w banku: 99993.19 zł
+  Zablokowana rezerwa: 2999.80 zł
+  Stan konta kredytobiorcy: 96993.40 zł
+
+Obrót 316:
+  Suma w banku: 99993.40 zł
+  Zablokowana rezerwa: 2999.80 zł
+  Stan konta kredytobiorcy: 96993.59 zł
+
+Obrót 317:
+  Suma w banku: 99993.59 zł
+  Zablokowana rezerwa: 2999.81 zł
+  Stan konta kredytobiorcy: 96993.79 zł
+
+Obrót 318:
+  Suma w banku: 99993.79 zł
+  Zablokowana rezerwa: 2999.81 zł
+  Stan konta kredytobiorcy: 96993.97 zł
+
+Obrót 319:
+  Suma w banku: 99993.97 zł
+  Zablokowana rezerwa: 2999.82 zł
+  Stan konta kredytobiorcy: 96994.15 zł
+
+Obrót 320:
+  Suma w banku: 99994.15 zł
+  Zablokowana rezerwa: 2999.82 zł
+  Stan konta kredytobiorcy: 96994.33 zł
+
+Obrót 321:
+  Suma w banku: 99994.33 zł
+  Zablokowana rezerwa: 2999.83 zł
+  Stan konta kredytobiorcy: 96994.50 zł
+
+Obrót 322:
+  Suma w banku: 99994.50 zł
+  Zablokowana rezerwa: 2999.83 zł
+  Stan konta kredytobiorcy: 96994.66 zł
+
+Obrót 323:
+  Suma w banku: 99994.66 zł
+  Zablokowana rezerwa: 2999.84 zł
+  Stan konta kredytobiorcy: 96994.82 zł
+
+Obrót 324:
+  Suma w banku: 99994.82 zł
+  Zablokowana rezerwa: 2999.84 zł
+  Stan konta kredytobiorcy: 96994.98 zł
+
+Obrót 325:
+  Suma w banku: 99994.98 zł
+  Zablokowana rezerwa: 2999.85 zł
+  Stan konta kredytobiorcy: 96995.13 zł
+
+Obrót 326:
+  Suma w banku: 99995.13 zł
+  Zablokowana rezerwa: 2999.85 zł
+  Stan konta kredytobiorcy: 96995.28 zł
+
+Obrót 327:
+  Suma w banku: 99995.28 zł
+  Zablokowana rezerwa: 2999.86 zł
+  Stan konta kredytobiorcy: 96995.42 zł
+
+Obrót 328:
+  Suma w banku: 99995.42 zł
+  Zablokowana rezerwa: 2999.86 zł
+  Stan konta kredytobiorcy: 96995.55 zł
+
+Obrót 329:
+  Suma w banku: 99995.55 zł
+  Zablokowana rezerwa: 2999.87 zł
+  Stan konta kredytobiorcy: 96995.69 zł
+
+Obrót 330:
+  Suma w banku: 99995.69 zł
+  Zablokowana rezerwa: 2999.87 zł
+  Stan konta kredytobiorcy: 96995.82 zł
+
+Obrót 331:
+  Suma w banku: 99995.82 zł
+  Zablokowana rezerwa: 2999.87 zł
+  Stan konta kredytobiorcy: 96995.94 zł
+
+Obrót 332:
+  Suma w banku: 99995.94 zł
+  Zablokowana rezerwa: 2999.88 zł
+  Stan konta kredytobiorcy: 96996.06 zł
+
+Obrót 333:
+  Suma w banku: 99996.06 zł
+  Zablokowana rezerwa: 2999.88 zł
+  Stan konta kredytobiorcy: 96996.18 zł
+
+Obrót 334:
+  Suma w banku: 99996.18 zł
+  Zablokowana rezerwa: 2999.89 zł
+  Stan konta kredytobiorcy: 96996.30 zł
+
+Obrót 335:
+  Suma w banku: 99996.30 zł
+  Zablokowana rezerwa: 2999.89 zł
+  Stan konta kredytobiorcy: 96996.41 zł
+
+Obrót 336:
+  Suma w banku: 99996.41 zł
+  Zablokowana rezerwa: 2999.89 zł
+  Stan konta kredytobiorcy: 96996.52 zł
+
+Obrót 337:
+  Suma w banku: 99996.52 zł
+  Zablokowana rezerwa: 2999.90 zł
+  Stan konta kredytobiorcy: 96996.62 zł
+
+Obrót 338:
+  Suma w banku: 99996.62 zł
+  Zablokowana rezerwa: 2999.90 zł
+  Stan konta kredytobiorcy: 96996.72 zł
+
+Obrót 339:
+  Suma w banku: 99996.72 zł
+  Zablokowana rezerwa: 2999.90 zł
+  Stan konta kredytobiorcy: 96996.82 zł
+
+Obrót 340:
+  Suma w banku: 99996.82 zł
+  Zablokowana rezerwa: 2999.90 zł
+  Stan konta kredytobiorcy: 96996.92 zł
+
+Obrót 341:
+  Suma w banku: 99996.92 zł
+  Zablokowana rezerwa: 2999.91 zł
+  Stan konta kredytobiorcy: 96997.01 zł
+
+Obrót 342:
+  Suma w banku: 99997.01 zł
+  Zablokowana rezerwa: 2999.91 zł
+  Stan konta kredytobiorcy: 96997.10 zł
+
+Obrót 343:
+  Suma w banku: 99997.10 zł
+  Zablokowana rezerwa: 2999.91 zł
+  Stan konta kredytobiorcy: 96997.19 zł
+
+Obrót 344:
+  Suma w banku: 99997.19 zł
+  Zablokowana rezerwa: 2999.92 zł
+  Stan konta kredytobiorcy: 96997.27 zł
+
+Obrót 345:
+  Suma w banku: 99997.27 zł
+  Zablokowana rezerwa: 2999.92 zł
+  Stan konta kredytobiorcy: 96997.35 zł
+
+Obrót 346:
+  Suma w banku: 99997.35 zł
+  Zablokowana rezerwa: 2999.92 zł
+  Stan konta kredytobiorcy: 96997.43 zł
+
+Obrót 347:
+  Suma w banku: 99997.43 zł
+  Zablokowana rezerwa: 2999.92 zł
+  Stan konta kredytobiorcy: 96997.51 zł
+
+Obrót 348:
+  Suma w banku: 99997.51 zł
+  Zablokowana rezerwa: 2999.93 zł
+  Stan konta kredytobiorcy: 96997.58 zł
+
+Obrót 349:
+  Suma w banku: 99997.58 zł
+  Zablokowana rezerwa: 2999.93 zł
+  Stan konta kredytobiorcy: 96997.66 zł
+
+Obrót 350:
+  Suma w banku: 99997.66 zł
+  Zablokowana rezerwa: 2999.93 zł
+  Stan konta kredytobiorcy: 96997.73 zł
+
+Obrót 351:
+  Suma w banku: 99997.73 zł
+  Zablokowana rezerwa: 2999.93 zł
+  Stan konta kredytobiorcy: 96997.79 zł
+
+Obrót 352:
+  Suma w banku: 99997.79 zł
+  Zablokowana rezerwa: 2999.93 zł
+  Stan konta kredytobiorcy: 96997.86 zł
+
+Obrót 353:
+  Suma w banku: 99997.86 zł
+  Zablokowana rezerwa: 2999.94 zł
+  Stan konta kredytobiorcy: 96997.92 zł
+
+Obrót 354:
+  Suma w banku: 99997.92 zł
+  Zablokowana rezerwa: 2999.94 zł
+  Stan konta kredytobiorcy: 96997.99 zł
+
+Obrót 355:
+  Suma w banku: 99997.99 zł
+  Zablokowana rezerwa: 2999.94 zł
+  Stan konta kredytobiorcy: 96998.05 zł
+
+Obrót 356:
+  Suma w banku: 99998.05 zł
+  Zablokowana rezerwa: 2999.94 zł
+  Stan konta kredytobiorcy: 96998.11 zł
+
+Obrót 357:
+  Suma w banku: 99998.11 zł
+  Zablokowana rezerwa: 2999.94 zł
+  Stan konta kredytobiorcy: 96998.16 zł
+
+Obrót 358:
+  Suma w banku: 99998.16 zł
+  Zablokowana rezerwa: 2999.94 zł
+  Stan konta kredytobiorcy: 96998.22 zł
+
+Obrót 359:
+  Suma w banku: 99998.22 zł
+  Zablokowana rezerwa: 2999.95 zł
+  Stan konta kredytobiorcy: 96998.27 zł
+
+Obrót 360:
+  Suma w banku: 99998.27 zł
+  Zablokowana rezerwa: 2999.95 zł
+  Stan konta kredytobiorcy: 96998.32 zł
+
+Obrót 361:
+  Suma w banku: 99998.32 zł
+  Zablokowana rezerwa: 2999.95 zł
+  Stan konta kredytobiorcy: 96998.37 zł
+
+Obrót 362:
+  Suma w banku: 99998.37 zł
+  Zablokowana rezerwa: 2999.95 zł
+  Stan konta kredytobiorcy: 96998.42 zł
+
+Obrót 363:
+  Suma w banku: 99998.42 zł
+  Zablokowana rezerwa: 2999.95 zł
+  Stan konta kredytobiorcy: 96998.47 zł
+
+Obrót 364:
+  Suma w banku: 99998.47 zł
+  Zablokowana rezerwa: 2999.95 zł
+  Stan konta kredytobiorcy: 96998.52 zł
+
+Obrót 365:
+  Suma w banku: 99998.52 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.56 zł
+
+Obrót 366:
+  Suma w banku: 99998.56 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.60 zł
+
+Obrót 367:
+  Suma w banku: 99998.60 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.64 zł
+
+Obrót 368:
+  Suma w banku: 99998.64 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.69 zł
+
+Obrót 369:
+  Suma w banku: 99998.69 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.72 zł
+
+Obrót 370:
+  Suma w banku: 99998.72 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.76 zł
+
+Obrót 371:
+  Suma w banku: 99998.76 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.80 zł
+
+Obrót 372:
+  Suma w banku: 99998.80 zł
+  Zablokowana rezerwa: 2999.96 zł
+  Stan konta kredytobiorcy: 96998.84 zł
+
+Obrót 373:
+  Suma w banku: 99998.84 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96998.87 zł
+
+Obrót 374:
+  Suma w banku: 99998.87 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96998.91 zł
+
+Obrót 375:
+  Suma w banku: 99998.91 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96998.94 zł
+
+Obrót 376:
+  Suma w banku: 99998.94 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96998.97 zł
+
+Obrót 377:
+  Suma w banku: 99998.97 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.00 zł
+
+Obrót 378:
+  Suma w banku: 99999.00 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.03 zł
+
+Obrót 379:
+  Suma w banku: 99999.03 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.06 zł
+
+Obrót 380:
+  Suma w banku: 99999.06 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.09 zł
+
+Obrót 381:
+  Suma w banku: 99999.09 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.12 zł
+
+Obrót 382:
+  Suma w banku: 99999.12 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.14 zł
+
+Obrót 383:
+  Suma w banku: 99999.14 zł
+  Zablokowana rezerwa: 2999.97 zł
+  Stan konta kredytobiorcy: 96999.17 zł
+
+Obrót 384:
+  Suma w banku: 99999.17 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.19 zł
+
+Obrót 385:
+  Suma w banku: 99999.19 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.22 zł
+
+Obrót 386:
+  Suma w banku: 99999.22 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.24 zł
+
+Obrót 387:
+  Suma w banku: 99999.24 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.26 zł
+
+Obrót 388:
+  Suma w banku: 99999.26 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.29 zł
+
+Obrót 389:
+  Suma w banku: 99999.29 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.31 zł
+
+Obrót 390:
+  Suma w banku: 99999.31 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.33 zł
+
+Obrót 391:
+  Suma w banku: 99999.33 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.35 zł
+
+Obrót 392:
+  Suma w banku: 99999.35 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.37 zł
+
+Obrót 393:
+  Suma w banku: 99999.37 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.39 zł
+
+Obrót 394:
+  Suma w banku: 99999.39 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.40 zł
+
+Obrót 395:
+  Suma w banku: 99999.40 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.42 zł
+
+Obrót 396:
+  Suma w banku: 99999.42 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.44 zł
+
+Obrót 397:
+  Suma w banku: 99999.44 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.46 zł
+
+Obrót 398:
+  Suma w banku: 99999.46 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.47 zł
+
+Obrót 399:
+  Suma w banku: 99999.47 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.49 zł
+
+Obrót 400:
+  Suma w banku: 99999.49 zł
+  Zablokowana rezerwa: 2999.98 zł
+  Stan konta kredytobiorcy: 96999.50 zł
+
+Obrót 401:
+  Suma w banku: 99999.50 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.52 zł
+
+Obrót 402:
+  Suma w banku: 99999.52 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.53 zł
+
+Obrót 403:
+  Suma w banku: 99999.53 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.55 zł
+
+Obrót 404:
+  Suma w banku: 99999.55 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.56 zł
+
+Obrót 405:
+  Suma w banku: 99999.56 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.57 zł
+
+Obrót 406:
+  Suma w banku: 99999.57 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.59 zł
+
+Obrót 407:
+  Suma w banku: 99999.59 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.60 zł
+
+Obrót 408:
+  Suma w banku: 99999.60 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.61 zł
+
+Obrót 409:
+  Suma w banku: 99999.61 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.62 zł
+
+Obrót 410:
+  Suma w banku: 99999.62 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.63 zł
+
+Obrót 411:
+  Suma w banku: 99999.63 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.65 zł
+
+Obrót 412:
+  Suma w banku: 99999.65 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.66 zł
+
+Obrót 413:
+  Suma w banku: 99999.66 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.67 zł
+
+Obrót 414:
+  Suma w banku: 99999.67 zł
+  Zablokowana rezerwa: 2999.99 zł
+  Stan konta kredytobiorcy: 96999.68 zł
+
+--------------------------------------------------
+WYNIK KOŃCOWY:
+Suma depozytów pierwotnych (1+2+3): 3000.00 zł
+Wykreowany depozyt kredytobiorcy: 96999.68 zł
+Łączna kwota w systemie (calosc): 99999.68 zł
+            </pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="footer-text">© 2026 Tomasz Głaz</span>
+  <span class="footer-text" data-pl="Katowice, Polska" data-en="Katowice, Poland">Katowice, Polska</span>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/candle-chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

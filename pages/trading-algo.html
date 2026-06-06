@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorytm Tradingowy — Tomasz Głaz</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body data-page="projects">
+
+<nav class="topbar">
+  <a href="../index.html" class="nav-logo">Tomasz Głaz</a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-pl="Start" data-en="Home">Start</a></li>
+    <li><a href="projects.html" class="is-active" data-pl="Projekty" data-en="Projects">Projekty</a></li>
+    <li><a href="about.html" data-pl="O mnie" data-en="About">O mnie</a></li>
+    <li><a href="contact.html" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Przełącz jasny motyw">
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <path d="M20.2 14.1a8.5 8.5 0 0 1-10.3-10.3 1 1 0 0 0-1.3-1.2A10 10 0 1 0 21.4 15.4a1 1 0 0 0-1.2-1.3Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <circle cx="12" cy="12" r="4.25" fill="currentColor" />
+          <path d="M12 1.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm0 16.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75ZM4.58 4.58a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 1 1-1.06 1.06L4.58 5.64a.75.75 0 0 1 0-1.06Zm12.37 12.37a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 0 1-1.06 1.06l-1.41-1.41a.75.75 0 0 1 0-1.06ZM1.75 12a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75Zm16.75 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75ZM5.99 16.95a.75.75 0 0 1 1.06 1.06l-1.41 1.41a.75.75 0 0 1-1.06-1.06l1.41-1.41Zm12.37-12.37a.75.75 0 1 1 1.06 1.06l-1.41 1.41a.75.75 0 1 1-1.06-1.06l1.41-1.41Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+    <div class="accessibility-menu-wrap">
+      <button class="icon-btn accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityMenu" aria-label="Ustawienia dostępności">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon-svg icon-accessibility" focusable="false">
+            <circle cx="12" cy="4.75" r="1.85" fill="currentColor" />
+            <path d="M5.1 8.45a1.2 1.2 0 1 1 .22-2.39c2.33.21 4.48.31 6.46.31 1.97 0 4.1-.1 6.38-.31a1.2 1.2 0 1 1 .22 2.39c-1.85.17-3.58.27-5.19.31v4.45l1.68 5.66a1.25 1.25 0 0 1-2.4.71l-1.3-4.38-1.27 4.38a1.25 1.25 0 0 1-2.4-.7l1.65-5.67V8.74c-1.3-.04-2.99-.14-5.05-.29Z" fill="currentColor" />
+            <path d="M7.1 20.15a1.2 1.2 0 0 1-1.16-1.5l1.4-5.18a1.2 1.2 0 1 1 2.32.63l-1.4 5.18a1.2 1.2 0 0 1-1.16.87Zm9.72 0a1.2 1.2 0 0 1-1.16-.88l-1.37-5.18a1.2 1.2 0 0 1 2.32-.61l1.37 5.18a1.2 1.2 0 0 1-1.16 1.49Z" fill="currentColor" />
+          </svg>
+        </span>
+      </button>
+      <div class="accessibility-menu" id="accessibilityMenu" hidden>
+        <button class="menu-btn" id="contrastToggle" type="button" aria-pressed="false"><span data-pl="Wysoki kontrast" data-en="High contrast">Wysoki kontrast</span></button>
+        <button class="menu-btn" id="fontToggle" type="button" aria-pressed="false"><span data-pl="Większy tekst" data-en="Larger text">Większy tekst</span></button>
+      </div>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<main class="site-shell subpage-layout">
+  <section class="page-hero">
+    <canvas id="candleChart" class="hero-bg-canvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="eyebrow fade-in fade-in-1" data-pl="DEEP REINFORCEMENT LEARNING W FINANSACH" data-en="DEEP REINFORCEMENT LEARNING IN FINANCE">DEEP REINFORCEMENT LEARNING W FINANSACH</div>
+    <h1 class="page-title fade-in fade-in-2" data-pl="Algorytm <span class='outline-text'>Tradingowy</span>" data-en="Trading <span class='outline-text'>Algorithm</span>">Algorytm <span class="outline-text">Tradingowy</span></h1>
+    <p class="page-lead fade-in fade-in-3" data-pl="Bot oparty na Deep Reinforcement Learning uczący się strategii tradingowych bezpośrednio z danych rynkowych." data-en="A Deep Reinforcement Learning bot that learns trading strategies directly from market data.">Bot oparty na Deep Reinforcement Learning uczący się strategii tradingowych bezpośrednio z danych rynkowych.</p>
+    <div class="button-row fade-in fade-in-4">
+      <a href="projects.html" class="btn-ghost" data-pl="← Wróć do projektów" data-en="← Back to projects">← Wróć do projektów</a>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Opis projektu" data-en="Project overview">Opis projektu</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="journey-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 32px; align-items: stretch;">
+        
+        <div class="journey-card featured" style="grid-column: 1 / -1;">
+          <div class="card-phase" data-pl="ALGORYTM JEST DALEJ ROZWIJANY" data-en="ALGORITHM IS STILL UNDER DEVELOPMENT">ALGORYTM JEST DALEJ ROZWIJANY</div>
+          
+          <div class="card-title" data-pl="Celem projektu jest stworzenie bota tradingowego generującego zysk na akcjach spółek z sektora technologicznego." data-en="The goal of the project is to create a trading bot that generates profit on technology sector stocks.">Celem projektu jest stworzenie bota tradingowego generującego zysk na akcjach spółek z sektora technologicznego.</div>
+          
+          <div class="card-body" data-pl="Algorytm od początku przeszedł wiele modyfikacji, oto krótka historia jego rozwoju." data-en="The algorithm has undergone many modifications from the beginning; here is a brief history of its development.">Algorytm od początku przeszedł wiele modyfikacji, oto krótka historia jego rozwoju.</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="card-title" data-pl="Etap 1 - Klasyfikator" data-en="Stage 1 - Classifier">Etap 1 - Klasyfikator</div>
+          <div class="card-body" data-pl="Pierwszą wersją bota był klasyfikator, który sprawdzał, czy zwrot w przeciągu 5 dni był większy niż 1%. Algorytm po zoptymalizowaniu wskaźników (średnich kroczących, MACD, RSI, wstęg Bollingera itp.) oraz zastosowaniu XGBoost uzyskał accuracy na poziomie 80%, jednakże bardzo niską precyzję i czułość, co zmusiło mnie do poszukania innego rozwiązania." data-en="The first version of the bot was a classifier that checked whether the return over 5 days was greater than 1%. After optimizing indicators (Moving Averages, MACD, RSI, Bollinger Bands, etc.) and implementing XGBoost, the algorithm achieved an accuracy of 80%, but with very low precision and recall. This forced me to look for another solution.">Pierwszą wersją bota był klasyfikator, który sprawdzał, czy zwrot w przeciągu 5 dni był większy niż 1%. Algorytm po zoptymalizowaniu wskaźników (średnich kroczących, MACD, RSI, wstęg Bollingera itp.) oraz zastosowaniu XGBoost uzyskał accuracy na poziomie 80%, jednakże bardzo niską precyzję i czułość, co zmusiło mnie do poszukania innego rozwiązania.</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="card-title" data-pl="Etap 2 - DoubleDQN" data-en="Stage 2 - DoubleDQN">Etap 2 - DoubleDQN</div>
+          <div class="card-body" data-pl="W drugiej wersji bota zastosowałem architekturę DoubleDQN. Dało to duże pole do manipulacji środowiskiem oraz hiperparametrami, aby wytrenować model na realistycznych danych i zmusić go do łapania zależności. Pojawiło się jednak wiele problemów związanych z wyciekiem danych (tzw. 'data leakage'), co prowadziło do zaburzeń treningu (look-ahead bias). Aby uniknąć tego problemu, zastosowałem normalizację online Welforda, która normalizowała dane 'w locie', co usunęło wszelkie wycieki. Po uszczelnieniu systemu mogłem przystąpić do testów, które nie były jednak zadowalające. Model nic nie robił, albo tradował z bardzo wysoką częstotliwością, aby oszukać mój system nagród (reward hacking). To zmusiło mnie do pracy nad środowiskiem, w którym handluje bot." data-en="In the second version of the bot, I used the DoubleDQN architecture. This allowed for significant manipulation of the environment and hyperparameters to train the model on realistic data and force it to capture dependencies. However, many problems arose related to data leakage, leading to training disruptions and look-ahead bias. To avoid this problem, I applied Welford's online normalization, which normalized the data 'on the fly', eliminating all data leaks. After securing the system, I could proceed with tests, which were unfortunately not satisfactory. The model either did nothing or traded at a very high frequency to trick my reward system (reward hacking). This forced me to work on the environment in which the bot trades.">W drugiej wersji bota zastosowałem architekturę DoubleDQN. Dało to duże pole do manipulacji środowiskiem oraz hiperparametrami, aby wytrenować model na realistycznych danych i zmusić go do łapania zależności. Pojawiło się jednak wiele problemów związanych z wyciekiem danych (tzw. "data leakage"), co prowadziło do zaburzeń treningu (look-ahead bias). Aby uniknąć tego problemu, zastosowałem normalizację online Welforda, która normalizowała dane "w locie", co usunęło wszelkie wycieki. Po uszczelnieniu systemu mogłem przystąpić do testów, które nie były jednak zadowalające. Model nic nie robił, albo tradował z bardzo wysoką częstotliwością, aby oszukać mój system nagród (reward hacking). To zmusiło mnie do pracy nad środowiskiem, w którym handluje bot.</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="card-title" data-pl="Etap 3 - Praca nad środowiskiem" data-en="Stage 3 - Working on the Environment">Etap 3 - Praca nad środowiskiem</div>
+          <div class="card-body" data-pl="Następnym krokiem w rozwoju modelu była praca nad środowiskiem, w którym bot handluje, aby zapewnić realistyczne warunki treningowe i walidacyjne. Uwzględnione zostały koszty transakcji, spread oraz slippage. Spowodowało to drastyczne pogorszenie się wyników, co było przewidywalne, jednakże pozwoliło na bardziej realistyczną ocenę skuteczności modelu. Po urealistycznieniu środowiska, zająłem się projektowaniem nagrody. Zastosowałem nagrodę logarytmiczną, aby nie zaburzyć wag neuronowych przy wysokich stratach lub zyskach. Potem zmieniłem nagrodę na asymetryczną logarytmiczną, aby strata bolała bardziej niż cieszył zysk. Cały ten etap zakończyłem zastosowaniem Walk Forward Validation, gdzie bot startował od fazy Curriculum z obniżonymi kosztami transakcyjnymi, a potem był uczony przez 4 foldy i walidowany co 10 epizodów. Od tego momentu do oceny modelu stosowałem Sharpe Ratio." data-en="The next step in the model's development was working on the environment in which the bot trades, to ensure realistic training and validation conditions. Transaction costs, spread, and slippage were all taken into account. This caused a drastic degradation in results, which was predictable, but it allowed for a more realistic assessment of the model's effectiveness. After making the environment more realistic, I focused on designing the reward function. I applied a logarithmic reward to prevent warping the neural weights during periods of high losses or gains. Later, I changed the reward to an asymmetric logarithmic function, so that a loss would 'hurt' more than a gain would reward. I concluded this entire stage by implementing Walk-Forward Validation, where the bot started with a Curriculum phase featuring lowered transaction costs, and was then trained across 4 folds and validated every 10 episodes. From that point on, I used the Sharpe Ratio to evaluate the model.">Następnym krokiem w rozwoju modelu była praca nad środowiskiem, w którym bot handluje, aby zapewnić realistyczne warunki treningowe i walidacyjne. Uwzględnione zostały koszty transakcji, spread oraz slippage. Spowodowało to drastyczne pogorszenie się wyników, co było przewidywalne, jednakże pozwoliło na bardziej realistyczną ocenę skuteczności modelu. Po urealistycznieniu środowiska, zająłem się projektowaniem nagrody. Zastosowałem nagrodę logarytmiczną, aby nie zaburzyć wag neuronowych przy wysokich stratach lub zyskach. Potem zmieniłem nagrodę na asymetryczną logarytmiczną, aby strata bolała bardziej niż cieszył zysk. Cały ten etap zakończyłem zastosowaniem Walk Forward Validation, gdzie bot startował od fazy Curriculum z obniżonymi kosztami transakcyjnymi, a potem był uczony przez 4 foldy i walidowany co 10 epizodów. Od tego momentu do oceny modelu stosowałem Sharpe Ratio.</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="card-title" data-pl="Etap 4 - Przejście na architekturę PPO" data-en="Stage 4 - Transition to PPO Architecture">Etap 4 - Przejście na architekturę PPO</div>
+          <div class="card-body" data-pl="Po długotrwałym procesie projektowania środowiska oraz dostrajania hiperparametrów model osiągnął limit swoich możliwości. Po namyśle postanowiłem przeprojektować go z architektury DQN na PPO, która może używać akcji ciągłej i lepiej rozumie szeregi czasowe. To jest etap, nad którym pracuję aktualnie." data-en="After a lengthy process of designing the environment and tuning hyperparameters, the model reached the limit of its capabilities. After some thought, I decided to redesign it from the DQN architecture to PPO, which can handle continuous action spaces and better understands time series. This is the stage I am currently working on.">Po długotrwałym procesie projektowania środowiska oraz dostrajania hiperparametrów model osiągnął limit swoich możliwości. Po namyśle postanowiłem przeprojektować go z architektury DQN na PPO, która może używać akcji ciągłej i lepiej rozumie szeregi czasowe. To jest etap, nad którym pracuję aktualnie.</div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Architektura i technologie" data-en="Architecture and technologies">Architektura i technologie</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="journey-grid">
+        <div class="journey-card">
+          <div class="card-phase" data-pl="ŚRODOWISKO" data-en="ENVIRONMENT">ŚRODOWISKO</div>
+          <div class="card-title" data-pl="Złożone środowisko treningowe z ciągłą przestrzenią akcji" data-en="Complex training environment with continuous action space">Złożone środowisko treningowe z ciągłą przestrzenią akcji</div>
+          <div class="card-body" data-pl="Środowisko bazuje na oknie czasowym z ostatnich 21 dni. Obserwacja stanu agenta to wektor 19 zmiennych: 13 surowych wskaźników technicznych i makroekonomicznych, 3 prawdopodobieństw reżimu rynkowego (bull/bear/sideways wyliczanych przez XGBoost), aktualnej pozycji oraz kontekstu (EMA zysków i wiek pozycji). Przestrzeń akcji jest ciągła w przedziale [-1, 1], co pozwala na płynne przechodzenie od krótkiej do długiej pozycji z zastosowaniem algorytmu Action Smoothing, który narzuca maksymalną dzienną deltę pozycji, naturalnie ograniczając nadmierny obrót (turnover). Środowisko symuluje bardzo rygorystyczne warunki: prowizje od transakcji, poślizg cenowy (slippage) dynamicznie zależny od wskaźnika ATR, a także codzienne opłaty za utrzymywanie krótkich pozycji (borrow fee). Funkcja nagrody opiera się na logarytmicznej stopie zwrotu, powiększonej o kary za obsunięcia kapitału (soft drawdown penalty)." data-en="The environment is based on a 21-day time window. The agent's state observation is a vector of 19 variables: 13 raw technical and macroeconomic indicators, 3 market regime probabilities (bull/bear/sideways calculated by XGBoost), current position, and context features (EMA of PnL and position age). The action space is continuous in the [-1, 1] range, allowing for smooth transitions from short to long positions using an Action Smoothing algorithm that imposes a maximum daily position delta, naturally limiting excessive turnover. The environment simulates highly rigorous conditions: transaction commissions, slippage dynamically dependent on the ATR indicator, and daily borrow fees for holding short positions. The reward function is based on a logarithmic return rate, combined with soft drawdown penalties.">Środowisko bazuje na oknie czasowym z ostatnich 21 dni. Obserwacja stanu agenta to wektor 19 zmiennych: 13 surowych wskaźników technicznych i makroekonomicznych, 3 prawdopodobieństw reżimu rynkowego (bull/bear/sideways wyliczanych przez XGBoost), aktualnej pozycji oraz kontekstu (EMA zysków i wiek pozycji). Przestrzeń akcji jest ciągła w przedziale [-1, 1], co pozwala na płynne przechodzenie od krótkiej do długiej pozycji z zastosowaniem algorytmu Action Smoothing, który narzuca maksymalną dzienną deltę pozycji, naturalnie ograniczając nadmierny obrót (turnover). Środowisko symuluje bardzo rygorystyczne warunki: prowizje od transakcji, poślizg cenowy (slippage) dynamicznie zależny od wskaźnika ATR, a także codzienne opłaty za utrzymywanie krótkich pozycji (borrow fee). Funkcja nagrody opiera się na logarytmicznej stopie zwrotu, powiększonej o kary za obsunięcia kapitału (soft drawdown penalty).</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="card-phase" data-pl="MODEL" data-en="MODEL">MODEL</div>
+          <div class="card-title" data-pl="Architektura PPO Actor-Critic z systemem Temporal Attention" data-en="PPO Actor-Critic architecture with Temporal Attention system">Architektura PPO Actor-Critic z systemem Temporal Attention</div>
+          <div class="card-body" data-pl="Model wykorzystuje architekturę Actor-Critic opartą na algorytmie Proximal Policy Optimization (PPO). Sieć analizuje szeregi czasowe za pomocą dwuwarstwowej sieci LSTM (64 neurony ukryte), po której następuje autorska warstwa Temporal Attention (4 głowy), skupiająca się na najistotniejszych wzorcach cenowych w danym oknie czasowym. W celu wyeliminowania wycieku danych (look-ahead bias) zaimplementowałem normalizację danych on-line przy użyciu algorytmu Welforda, która standaryzuje cechy całkowicie w locie. Proces nauki wykorzystuje Walk-Forward Validation (4 foldy czasowe). Trening zawsze rozpoczyna się od fazy Curriculum Learning na najstarszych danych z obniżonymi o 50% kosztami transakcyjnymi, by ułatwić modelowi start. PPO aktualizuje wagi wykorzystując Generalized Advantage Estimation (GAE) wyłącznie po pełnych epizodach, stopniowo zmniejszając współczynnik entropii (exploration decay)." data-en="The model utilizes an Actor-Critic architecture based on the Proximal Policy Optimization (PPO) algorithm. The network analyzes time series using a two-layer LSTM (64 hidden neurons), followed by a custom Temporal Attention layer (4 heads) that focuses on the most critical price patterns within a given time window. To eliminate look-ahead bias, I implemented on-line data normalization using Welford's algorithm, which standardizes features entirely on the fly. The learning process uses Walk-Forward Validation across 4 time folds. Training always begins with a Curriculum Learning phase on the oldest data with transaction costs reduced by 50% to bootstrap the model. PPO updates weights using Generalized Advantage Estimation (GAE) exclusively after full episodes, while gradually decreasing the entropy coefficient (exploration decay).">Model wykorzystuje architekturę Actor-Critic opartą na algorytmie Proximal Policy Optimization (PPO). Sieć analizuje szeregi czasowe za pomocą dwuwarstwowej sieci LSTM (64 neurony ukryte), po której następuje autorska warstwa Temporal Attention (4 głowy), skupiająca się na najistotniejszych wzorcach cenowych w danym oknie czasowym. W celu wyeliminowania wycieku danych (look-ahead bias) zaimplementowałem normalizację danych on-line przy użyciu algorytmu Welforda, która standaryzuje cechy całkowicie w locie. Proces nauki wykorzystuje Walk-Forward Validation (4 foldy czasowe). Trening zawsze rozpoczyna się od fazy Curriculum Learning na najstarszych danych z obniżonymi o 50% kosztami transakcyjnymi, by ułatwić modelowi start. PPO aktualizuje wagi wykorzystując Generalized Advantage Estimation (GAE) wyłącznie po pełnych epizodach, stopniowo zmniejszając współczynnik entropii (exploration decay).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Wyniki i wnioski" data-en="Results and conclusions">Wyniki i wnioski</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="journey-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+        
+        <div class="journey-card">
+          <div class="card-phase" data-pl="BACKTESTING" data-en="BACKTESTING">BACKTESTING</div>
+          <div class="card-title" data-pl="Ewaluacja w rygorystycznych warunkach Out-of-Sample" data-en="Evaluation in rigorous Out-of-Sample conditions">Ewaluacja w rygorystycznych warunkach Out-of-Sample</div>
+          <div class="card-body" 
+               data-pl="Wyniki najnowszej sesji pozostawiają jeszcze wiele do życzenia, gdyż model doświadczył zjawiska katastrofalnego zapomnienia. Curriculum trenowane było na dość zmiennym rynku i model dobrze nauczył się wykorzystywać pozycje długie (long) oraz krótkie (short). Jednak w Foldzie 1 trening przypadał na hossę covidową, co spowodowało utrwalenie w jego wagach przekonania, że rynek zawsze rośnie. Przed następnym treningiem i ewaluacją będę musiał dostroić okna czasowe oraz nieco zwiększyć tempo rozkładu wag (weight decay)." 
+               data-en="The results of the latest session still leave much to be desired, as the model experienced catastrophic forgetting. The curriculum was trained on a fairly volatile market, and the model learned well how to utilize long and short positions. However, in Fold 1, it was trained during the COVID-19 bull market, which caused its weights to reinforce the belief that the market always goes up. Before the next training and evaluation phase, I will need to fine-tune the time windows and slightly increase the weight decay rate.">
+            Wyniki najnowszej sesji pozostawiają jeszcze wiele do życzenia, gdyż model doświadczył zjawiska katastrofalnego zapomnienia. Curriculum trenowane było na dość zmiennym rynku i model dobrze nauczył się wykorzystywać pozycje długie (long) oraz krótkie (short). Jednak w Foldzie 1 trening przypadał na hossę covidową, co spowodowało utrwalenie w jego wagach przekonania, że rynek zawsze rośnie. Przed następnym treningiem i ewaluacją będę musiał dostroić okna czasowe oraz nieco zwiększyć tempo rozkładu wag (weight decay).
+          </div>
+        </div>
+
+        <div class="journey-card">
+          <div class="card-phase" data-pl="WNIOSKI" data-en="CONCLUSIONS">WNIOSKI</div>
+          <div class="card-title" data-pl="Lekcje z RL i plany na przyszłość" data-en="Lessons from RL and future plans">Lekcje z RL i plany na przyszłość</div>
+          <div class="card-body" 
+               data-pl="Cały ten projekt wiele mnie nauczył i pozwolił mi rozwinąć umiejętności zarówno w zakresie programowania, jak i uczenia maszynowego. Budowa tak zaawansowanego systemu wymusiła na mnie poszerzenie wiedzy poprzez studiowanie literatury naukowej opisującej działanie algorytmów Reinforcement Learning. Niesamowitą pomocą okazały się narzędzia sztucznej inteligencji, a dokładniej LLM-y (Claude, ChatGPT, Gemini), które znacząco przyspieszyły proces pisania kodu, pomogły mi zrozumieć złożone zagadnienia i były nieocenione przy debugowaniu oraz poszukiwaniu wycieków danych (data leakage). Na pewno będę w przyszłości dalej rozwijał ten projekt oraz zgłębiał wiedzę z zakresu wykorzystania uczenia maszynowego w finansach, ponieważ wiążę z tą dziedziną temat mojej pracy licencjackiej." 
+               data-en="This entire project has taught me a lot, allowing me to develop my skills in both programming and machine learning. Building such an advanced project forced me to expand my knowledge by studying scientific literature covering Reinforcement Learning algorithms. AI tools, specifically LLMs (Claude, ChatGPT, Gemini), proved to be an incredible help—significantly accelerating the code-writing process, helping me grasp complex concepts, and proving invaluable for debugging and detecting data leakage. I will definitely continue to develop this project in the future and deepen my knowledge of machine learning applications in finance, as I connect this field with the topic of my bachelor's thesis.">
+            Cały ten projekt wiele mnie nauczył i pozwolił mi rozwinąć umiejętności zarówno w zakresie programowania, jak i uczenia maszynowego. Budowa tak zaawansowanego systemu wymusiła na mnie poszerzenie wiedzy poprzez studiowanie literatury naukowej opisującej działanie algorytmów Reinforcement Learning. Niesamowitą pomocą okazały się narzędzia sztucznej inteligencji, a dokładniej LLM-y (Claude, ChatGPT, Gemini), które znacząco przyspieszyły proces pisania kodu, pomogły mi zrozumieć złożone zagadnienia i były nieocenione przy debugowaniu oraz poszukiwaniu wycieków danych (data leakage). Na pewno będę w przyszłości dalej rozwijał ten projekt oraz zgłębiał wiedzę z zakresu wykorzystania uczenia maszynowego w finansach, ponieważ wiążę z tą dziedziną temat mojej pracy licencjackiej.
+          </div>
+        </div>
+        </div>
+
+      <div class="chart-container" style="margin-top: 50px;">
+        <div class="card-media" style="border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+          <img src="assets/images/Unknown.png" alt="Wykres z fazy Curriculum Learning" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        </div>
+        
+        <div class="card-body" style="font-size: 0.85em; opacity: 0.7; margin-top: 15px; text-align: center;" data-pl="Rys. 1: Wynik fazy Curriculum na jednej ze spółek z ostatniej sesji. Sesja zakończyła się niepowodzeniem, przez zjawisko Catastrophic Forgetting." data-en="Fig. 1: Result of the Curriculum phase on one of the stocks from the last session. The session ended in failure due to the phenomenon of Catastrophic Forgetting.">Rys. 1: Wynik fazy Curriculum na jednej ze spółek z ostatniej sesji. Sesja zakończyła się niepowodzeniem, przez zjawisko Catastrophic Forgetting.</div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="footer-text">© 2026 Tomasz Głaz</span>
+  <span class="footer-text" data-pl="Katowice, Polska" data-en="Katowice, Poland">Katowice, Polska</span>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/candle-chart.js"></script>
+</body>
+</html>

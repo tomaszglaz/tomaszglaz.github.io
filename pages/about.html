@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mnie — Tomasz Głaz</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+  /* =========================================
+     EFEKTY SEKCJI "O MNIE"
+     Zoptymalizowane pod tryb ciemny i jasny
+  ========================================= */
+
+  /* Blok cytatu (Motto) */
+  .quote-block {
+    margin: 0 0 2rem 0; 
+    padding-left: 20px; 
+    border-left: 3px solid rgba(255, 255, 255, 0.3); 
+    transition: border-color 0.3s ease;
+  }
+  .quote-block:hover {
+    border-color: #8a2be2;
+  }
+  
+  /* Karty 3-kolumnowe na dole (Cele / Status / Podejście) */
+  .about-card-custom {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Typografia wewnątrz kart */
+  .ac-title {
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+  }
+  .ac-text {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #a3b8cc;
+    margin-bottom: 15px;
+  }
+  .ac-text.no-margin {
+    margin-bottom: 0;
+  }
+  .ac-list {
+    margin-top: 15px;
+    padding-left: 18px;
+    color: #a3b8cc;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ac-subtext {
+    font-size: 0.85em;
+    line-height: 1.4;
+    color: #8b949e;
+    margin: 0;
+  }
+
+  /* =========================================
+     TRYB JASNY (Oveerrides)
+  ========================================= */
+  
+  /* Nadpisanie cytatu */
+  body.light-theme .quote-block,
+  body.light .quote-block,
+  body[data-theme="light"] .quote-block,
+  html[data-theme="light"] .quote-block {
+    border-left-color: rgba(0, 0, 0, 0.2);
+  }
+  body.light-theme .quote-block:hover,
+  body.light .quote-block:hover,
+  body[data-theme="light"] .quote-block:hover,
+  html[data-theme="light"] .quote-block:hover {
+    border-color: #8a2be2;
+  }
+
+  /* Nadpisanie kart */
+  body.light-theme .about-card-custom,
+  body.light .about-card-custom,
+  body[data-theme="light"] .about-card-custom,
+  html[data-theme="light"] .about-card-custom {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Nadpisanie tekstów w kartach */
+  body.light-theme .ac-title,
+  body.light .ac-title,
+  body[data-theme="light"] .ac-title,
+  html[data-theme="light"] .ac-title {
+    color: #111827;
+  }
+  
+  body.light-theme .ac-text,
+  body.light .ac-text,
+  body[data-theme="light"] .ac-text,
+  html[data-theme="light"] .ac-text,
+  body.light-theme .ac-list,
+  body.light .ac-list,
+  body[data-theme="light"] .ac-list,
+  html[data-theme="light"] .ac-list {
+    color: #4b5563;
+  }
+
+  body.light-theme .ac-subtext,
+  body.light .ac-subtext,
+  body[data-theme="light"] .ac-subtext,
+  html[data-theme="light"] .ac-subtext {
+    color: #6b7280;
+  }
+
+  /* Nadpisanie strzałek w "Czego szukam" */
+  body.light-theme .looking-item-icon,
+  body.light .looking-item-icon,
+  body[data-theme="light"] .looking-item-icon,
+  html[data-theme="light"] .looking-item-icon {
+    color: #111827 !important;
+  }
+</style>
+</head>
+<body data-page="about">
+
+<nav class="topbar">
+  <a href="../index.html" class="nav-logo">Tomasz Głaz</a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-pl="Start" data-en="Home">Start</a></li>
+    <li><a href="projects.html" data-pl="Projekty" data-en="Projects">Projekty</a></li>
+    <li><a href="about.html" class="is-active" data-pl="O mnie" data-en="About">O mnie</a></li>
+    <li><a href="contact.html" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Przełącz jasny motyw">
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <path d="M20.2 14.1a8.5 8.5 0 0 1-10.3-10.3 1 1 0 0 0-1.3-1.2A10 10 0 1 0 21.4 15.4a1 1 0 0 0-1.2-1.3Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <circle cx="12" cy="12" r="4.25" fill="currentColor" />
+          <path d="M12 1.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm0 16.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75ZM4.58 4.58a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 1 1-1.06 1.06L4.58 5.64a.75.75 0 0 1 0-1.06Zm12.37 12.37a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 0 1-1.06 1.06l-1.41-1.41a.75.75 0 0 1 0-1.06ZM1.75 12a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75Zm16.75 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75ZM5.99 16.95a.75.75 0 0 1 1.06 1.06l-1.41 1.41a.75.75 0 0 1-1.06-1.06l1.41-1.41Zm12.37-12.37a.75.75 0 1 1 1.06 1.06l-1.41 1.41a.75.75 0 1 1-1.06-1.06l1.41-1.41Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+    <div class="accessibility-menu-wrap">
+      <button class="icon-btn accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityMenu" aria-label="Ustawienia dostępności">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon-svg icon-accessibility" focusable="false">
+            <circle cx="12" cy="4.75" r="1.85" fill="currentColor" />
+            <path d="M5.1 8.45a1.2 1.2 0 1 1 .22-2.39c2.33.21 4.48.31 6.46.31 1.97 0 4.1-.1 6.38-.31a1.2 1.2 0 1 1 .22 2.39c-1.85.17-3.58.27-5.19.31v4.45l1.68 5.66a1.25 1.25 0 0 1-2.4.71l-1.3-4.38-1.27 4.38a1.25 1.25 0 0 1-2.4-.7l1.65-5.67V8.74c-1.3-.04-2.99-.14-5.05-.29Z" fill="currentColor" />
+            <path d="M7.1 20.15a1.2 1.2 0 0 1-1.16-1.5l1.4-5.18a1.2 1.2 0 1 1 2.32.63l-1.4 5.18a1.2 1.2 0 0 1-1.16.87Zm9.72 0a1.2 1.2 0 0 1-1.16-.88l-1.37-5.18a1.2 1.2 0 0 1 2.32-.61l1.37 5.18a1.2 1.2 0 0 1-1.16 1.49Z" fill="currentColor" />
+          </svg>
+        </span>
+      </button>
+      <div class="accessibility-menu" id="accessibilityMenu" hidden>
+        <button class="menu-btn" id="contrastToggle" type="button" aria-pressed="false"><span data-pl="Wysoki kontrast" data-en="High contrast">Wysoki kontrast</span></button>
+        <button class="menu-btn" id="fontToggle" type="button" aria-pressed="false"><span data-pl="Większy tekst" data-en="Larger text">Większy tekst</span></button>
+      </div>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<main class="site-shell subpage-layout">
+  <section class="page-hero" style="padding: 80px 0 60px 0;">
+    <canvas id="candleChart" class="hero-bg-canvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    
+    <div class="content-wrap" style="display: flex; align-items: flex-start; justify-content: flex-start; gap: 40px; flex-wrap: wrap; position: relative; z-index: 2;">
+      <div class="profile-avatar-container" style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); flex-shrink: 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+        <img src="../assets/images/profile.jpg" alt="Tomasz Głaz" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      
+      <div class="hero-text-block">
+        <h1 class="page-title fade-in fade-in-2" style="margin: 10px 0;" data-pl="Tomasz Głaz" data-en="Tomasz Głaz">Tomasz Głaz</h1>
+        <p class="page-lead fade-in fade-in-3" style="max-width: 700px; margin: 0;" data-pl="Student na Uniwersytecie Ekonomicznym w Katowicach" data-en="Student at the University of Economics in Katowice">Student na Uniwersytecie Ekonomicznym w Katowicach</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Profil i cel zawodowy" data-en="Profile and professional goal">Profil i cel zawodowy</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <div class="quote-block">
+            <blockquote style="margin: 0; padding: 0;">
+                <span class="about-italic" 
+                    style="font-size: 1.2em; font-style: italic; letter-spacing: 0.5px; opacity: 0.9; display: block;" 
+                    data-pl="„Najpierw zrozum, potem działaj.”" 
+                    data-en="“Understand first, build second.”">
+                „Najpierw zrozum, potem działaj.”
+                </span>
+            </blockquote>
+          </div>
+
+          <div class="about-text">
+            <p data-pl="Jestem studentem pierwszego roku Analityki Finansowej na Uniwersytecie Ekonomicznym w Katowicach i członkiem koła naukowego modelowania finansowego QUANTUM. Poza uczelnią eksperymentuję z Machine Learning zastosowanym do finansów." 
+               data-en="I am a first-year Financial Analyst student at the University of Economics in Katowice and a member of the QUANTUM financial modeling research club. Outside of university, I experiment with Machine Learning applied to finance.">
+              Jestem studentem pierwszego roku Analityki Finansowej na Uniwersytecie Ekonomicznym w Katowicach i członkiem koła naukowego modelowania finansowego QUANTUM. Poza uczelnią eksperymentuję z Machine Learning zastosowanym do finansów.
+            </p>
+            <p data-pl="W pracy dla Śląskiego Związku Judo zautomatyzowałem pobieranie i przetwarzanie wyników zawodów — skróciłem proces z kilku dni do 15 minut. To nie był projekt akademicki, to był realny problem, który rozwiązałem kodem." data-en="At the Silesian Judo Union I automated the collection and processing of competition results — reducing the process from several days to 15 minutes. That was not an academic project, but a real problem solved with code.">W pracy dla Śląskiego Związku Judo zautomatyzowałem pobieranie i przetwarzanie wyników zawodów — skróciłem proces z kilku dni do 15 minut. To nie był projekt akademicki, to był realny problem, który rozwiązałem kodem.</p>
+            <p data-pl="Szukam miejsca, w którym mogę rosnąć jako analityk i budować rzeczy, które mają znaczenie biznesowe, a nie tylko dobrze wyglądają w portfolio." data-en="I am looking for a place where I can grow as an analyst and build things that carry business value, not just look good in a portfolio.">Szukam miejsca, w którym mogę rosnąć jako analityk i budować rzeczy, które mają znaczenie biznesowe, a nie tylko dobrze wyglądają w portfolio.</p>
+          </div>
+
+          <ul class="skills-list" style="margin-top: 1.5rem;">
+            <li class="skill-item"><span class="skill-dot"></span><span>Python — pandas, numpy, scikit-learn, torch, plotly, matplotlib</span></li>
+            <li class="skill-item"><span class="skill-dot"></span><span>SQL</span></li>
+            <li class="skill-item"><span class="skill-dot green"></span><span>Machine Learning — klasyfikacja, regresja, DRL</span></li>
+            <li class="skill-item"><span class="skill-dot green"></span><span>Power BI, Excel (Pivot, Power Query)</span></li>
+            <li class="skill-item"><span class="skill-dot purple"></span><span>Angielski B2+ (komentowanie zawodów na żywo)</span></li>
+            <li class="skill-item"><span class="skill-dot purple"></span><span>Root Cause Analysis, myślenie analityczne</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="looking-for">
+            <div class="looking-title" data-pl="CZEGO SZUKAM" data-en="WHAT I'M LOOKING FOR">CZEGO SZUKAM</div>
+            <div class="looking-items">
+              <div class="looking-item">
+                <span class="looking-item-icon">→</span>
+                <span data-pl="Staż lub praca w niepełnym wymiarze godzin w obszarze analizy danych finansowych, data analytics lub fintech" data-en="Internship or part-time role in financial data analysis, analytics, or fintech">Staż lub praca w niepełnym wymiarze godzin w obszarze analizy danych finansowych, data analytics lub fintech.</span>
+              </div>
+              <div class="looking-item">
+                <span class="looking-item-icon">→</span>
+                <span data-pl="Środowisko, gdzie docenia się ciekawość i inicjatywę — nie boję się pytań ani trudnych problemów." data-en="An environment that values curiosity and initiative — I am not afraid of difficult questions or hard problems.">Środowisko, gdzie docenia się ciekawość i inicjatywę — nie boję się pytań ani trudnych problemów.</span>
+              </div>
+              <div class="looking-item">
+                <span class="looking-item-icon">→</span>
+                <span data-pl="Projekt z realnym wpływem — nauczyłem się najwięcej nie z wykładów, ale z rozwiązywania prawdziwych problemów." data-en="A project with real impact — I learned most not from lectures, but from solving real problems.">Projekt z realnym wpływem — nauczyłem się najwięcej nie z wykładów, ale z rozwiązywania prawdziwych problemów.</span>
+              </div>
+              <div class="looking-item">
+                <span class="looking-item-icon">→</span>
+                <span data-pl="Katowice i okolice lub zdalnie — jestem studentem z elastycznym grafikiem." data-en="Katowice and surrounding area or remote — I am a student with a flexible schedule.">Katowice i okolice lub zdalnie - jestem studentem z elastycznym grafikiem.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> 
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="content-wrap">
+      <div class="section-header">
+        <h2 class="section-title" data-pl="Kierunek i podejście" data-en="Direction and approach">Kierunek i podejście</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="journey-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; align-items: stretch;">
+        
+        <div class="journey-card about-card-custom">
+          <div class="card-phase" data-pl="CELE" data-en="GOALS">CELE</div>
+          
+          <div style="margin-top: 15px;">
+            <h4 class="ac-title" data-pl="Krótkoterminowe" data-en="Short-term">Krótkoterminowe</h4>
+            <p class="ac-text" 
+               data-pl="Zdanie państwowego egzaminu na Maklera Papierów Wartościowych (KNF), pozyskanie wymagającego stażu w obszarze finansów." 
+               data-en="Passing the state Securities Broker exam (KNF), securing a challenging internship in finance.">
+              Zdanie państwowego egzaminu na Maklera Papierów Wartościowych (KNF), pozyskanie wymagającego stażu w obszarze finansów.
+            </p>
+            
+            <h4 class="ac-title" data-pl="Długoterminowe" data-en="Long-term">Długoterminowe</h4>
+            <p class="ac-text no-margin" 
+               data-pl="Praca nad własnymi projektami, rozwój umiejętności technicznych i analitycznych, budowanie portfolio z realnymi rezultatami oraz rozwój kariery zawodowej." 
+               data-en="Working on personal projects, developing technical and analytical skills, building a portfolio with real results, and advancing a professional career.">
+              Praca nad własnymi projektami, rozwój umiejętności technicznych i analitycznych, budowanie portfolio z realnymi rezultatami oraz rozwój kariery zawodowej.
+            </p>
+          </div>
+        </div>
+
+        <div class="journey-card about-card-custom">
+          <div class="card-phase" data-pl="STATUS" data-en="STATUS">STATUS</div>
+          <div class="card-title" style="margin-top: 15px;" data-pl="Co teraz robię?" data-en="What I'm doing now?">Co teraz robię?</div>
+          
+          <ul class="ac-list">
+            <li data-pl="Zgłębiam temat finansowych instrumentów pochodnych (Czytam książkę John'a C. Hull'a Options, Futures, and Other Derivatives)." data-en="Studying financial derivatives (Reading John C. Hull's book Options, Futures, and Other Derivatives).">Zgłębiam temat finansowych instrumentów pochodnych (Czytam książkę John'a C. Hull'a "Options, Futures, and Other Derivatives").</li>
+            <li data-pl="Rozwijam swoje projekty." data-en="Developing my projects.">Rozwijam swoje projekty.</li>
+            <li data-pl="Przerabiam materiały przygotowawcze i zadania do państwowego egzaminu maklerskiego." data-en="Reviewing preparatory materials and practice sets for the state broker licensure exam.">Przerabiam materiały przygotowawcze i zadania do państwowego egzaminu maklerskiego.</li>
+            <li data-pl="Utrzymuję i optymalizuję skrypty automatyzujące bazy danych Śląskiego Związku Judo." data-en="Maintaining and optimizing automation scripts for the Silesian Judo Association's databases.">Utrzymuję i optymalizuję skrypty automatyzujące bazy danych Śląskiego Związku Judo.</li>
+            <li data-pl="Przygotowuję się do sesji egzaminacyjnej." data-en="Preparing for the exam session.">Przygotowuję się do sesji egzaminacyjnej.</li>
+          </ul>
+        </div>
+
+        <div class="journey-card about-card-custom">
+          <div class="card-phase" data-pl="PODEJŚCIE" data-en="PODEJŚCIE">PODEJŚCIE</div>
+          <div class="card-title" style="margin-top: 15px;" data-pl="Jak pracuję?" data-en="How I work?">Jak pracuję?</div>
+          
+          <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 15px;">
+            <div>
+              <h4 class="ac-title" style="font-size: 0.95em;" data-pl="Najpierw zrozum, potem działaj" data-en="Understand, then act">Najpierw zrozum, potem działaj</h4>
+              <p class="ac-subtext" data-pl="Zanim siądę do rozwiązania problemu staram się dokładnie zrozumieć procesy za nim stojące, aby móc skutecznie działać." data-en="Before tackling a problem, I strive to thoroughly understand the underlying processes to act effectively.">Zanim siądę do rozwiązania problemu staram się dokładnie zrozumieć procesy za nim stojące, aby móc skutecznie działać.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="footer-text">© 2026 Tomasz Głaz</span>
+  <span class="footer-text" data-pl="Katowice, Polska" data-en="Katowice, Poland">Katowice, Polska</span>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/candle-chart.js"></script>
+</body>
+</html>

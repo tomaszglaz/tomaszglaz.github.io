@@ -1,0 +1,466 @@
+.page-hero,
+#hero,
+.error-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 8.5rem 3rem 4rem;
+}
+
+.page-hero,
+.error-hero {
+  min-height: 72vh;
+}
+
+.page-hero {
+  max-width: none;
+  padding-inline: max(3rem, calc((100vw - var(--content-width)) / 2 + 3rem));
+}
+
+#hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: none;
+  padding-inline: max(3rem, calc((100vw - var(--content-width)) / 2 + 3rem));
+}
+
+.hero-tag,
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.hero-tag::before,
+.eyebrow::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+h1,
+.page-title,
+.error-code {
+  max-width: 11ch;
+  margin-bottom: 1.35rem;
+  font-size: clamp(3.2rem, 8vw, 6.4rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.page-title {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+}
+
+.error-code {
+  max-width: none;
+  margin-bottom: 0.5rem;
+  font-size: clamp(4.2rem, 14vw, 8rem);
+}
+
+.h1-accent,
+.outline-text {
+  color: var(--text-dim);
+}
+
+.hero-desc,
+.page-lead,
+.error-copy {
+  max-width: 760px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.hero-cta,
+.button-row,
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.hero-stats,
+.stats-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat-item {
+  min-width: 180px;
+  padding: 0 0 1rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.page-section {
+  border-top: 1px solid var(--border);
+}
+
+.tiles-section {
+  border-bottom: 1px solid var(--border);
+}
+
+.tiles-wrap {
+  max-width: none;
+  padding: 0;
+}
+
+.grid-2,
+.journey-grid,
+.preview-grid,
+.about-grid,
+.contact-inner {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.journey-grid,
+.preview-grid,
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.analyses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.about-grid,
+.contact-inner,
+.page-summary-grid,
+.error-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.about-grid,
+.contact-inner {
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.page-summary-grid,
+.error-grid {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.about-text p {
+  margin-bottom: 1.15rem;
+}
+
+.about-italic {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-style: italic;
+}
+
+.looking-for {
+  position: sticky;
+  top: 6.5rem;
+  border-radius: 0;
+}
+
+.looking-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.looking-item {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.looking-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.looking-item-icon {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text);
+}
+
+.contact-heading {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.subpage-layout {
+  padding-top: 4rem;
+}
+
+body[data-page="projects"] .subpage-layout {
+  padding-top: 0;
+}
+
+body[data-page="projects"] .page-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.micro-note {
+  margin-top: 1.5rem;
+}
+
+.error-hero {
+  align-items: flex-start;
+}
+
+@media (max-width: 920px) {
+  .journey-grid,
+  .preview-grid,
+  .grid-2,
+  .about-grid,
+  .contact-inner,
+  .page-summary-grid,
+  .error-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .looking-for {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero,
+  .page-hero,
+  .error-hero {
+    padding: 12rem 1.5rem 3rem;
+  }
+
+  .content-wrap {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-tag,
+  .eyebrow {
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  h1,
+  .page-title,
+  .error-code {
+    font-size: clamp(2.75rem, 16vw, 4.4rem);
+  }
+
+  .container {
+    width: min(100% - 2rem, var(--content-width));
+  }
+
+  .stat-item {
+    min-width: 100%;
+  }
+
+  .results-grid,
+  .analyses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Feature tiles ──────────────────────────────────────────── */
+.tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  transform: none;
+}
+
+.tiles-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.feature-tile {
+  position: relative;
+  height: clamp(220px, 22vw, 320px);
+  isolation: isolate;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+body[data-page="home"] .feature-tile {
+  height: clamp(340px, 34vw, 440px);
+}
+
+.feature-tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--text-dim);
+}
+
+.tile-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.tile-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.60) 30%,
+    rgba(0,0,0,0.22) 58%,
+    transparent 78%
+  );
+}
+
+[data-theme="light"] .tile-content {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--bg) 96%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 72%, transparent) 30%,
+    color-mix(in srgb, var(--bg) 28%, transparent) 60%,
+    transparent 82%
+  );
+}
+
+.tile-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,0.50);
+  margin-bottom: 0.35rem;
+}
+
+[data-theme="light"] .tile-kicker {
+  color: rgba(0,0,0,0.45);
+}
+
+.tile-title {
+  font-size: clamp(1.1rem, 1.9vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+[data-theme="light"] .tile-title {
+  color: var(--text);
+}
+
+.tile-desc {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.70);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+  /* fast collapse, no delay */
+  transition: opacity 0.18s 0s, max-height 0.22s 0s, margin-bottom 0.22s 0s;
+}
+
+[data-theme="light"] .tile-desc {
+  color: var(--text-dim, rgba(0,0,0,0.58));
+}
+
+.feature-tile:hover .tile-desc {
+  opacity: 1;
+  max-height: 5em;
+  margin-bottom: 0.75rem;
+  /* intentional delay — quick mouse-overs don't trigger */
+  transition: opacity 0.30s 0.12s, max-height 0.36s 0.12s, margin-bottom 0.36s 0.12s;
+}
+
+@media (max-width: 900px) {
+  .tiles-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .tiles-wrap {
+    padding: 0;
+  }
+
+  .feature-tile {
+    height: 220px;
+  }
+
+  body[data-page="home"] .feature-tile {
+    height: 320px;
+  }
+}
+
+/* ── Hero background chart ──────────────────────────────────── */
+.hero-bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg) 80%, transparent) 28%,
+    color-mix(in srgb, var(--bg) 30%, transparent) 52%,
+    transparent 68%
+  );
+}
+
+#hero > *:not(canvas):not(.hero-scrim),
+.page-hero > *:not(canvas):not(.hero-scrim) {
+  position: relative;
+  z-index: 2;
+}

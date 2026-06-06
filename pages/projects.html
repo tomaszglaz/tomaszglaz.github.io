@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekty — Tomasz Głaz</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body data-page="projects">
+
+<nav class="topbar">
+  <a href="../index.html" class="nav-logo">Tomasz Głaz</a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-pl="Start" data-en="Home">Start</a></li>
+    <li><a href="projects.html" class="is-active" data-pl="Projekty" data-en="Projects">Projekty</a></li>
+    <li><a href="about.html" data-pl="O mnie" data-en="About">O mnie</a></li>
+    <li><a href="contact.html" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Przełącz jasny motyw">
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <path d="M20.2 14.1a8.5 8.5 0 0 1-10.3-10.3 1 1 0 0 0-1.3-1.2A10 10 0 1 0 21.4 15.4a1 1 0 0 0-1.2-1.3Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="icon-svg" focusable="false">
+          <circle cx="12" cy="12" r="4.25" fill="currentColor" />
+          <path d="M12 1.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm0 16.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75ZM4.58 4.58a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 1 1-1.06 1.06L4.58 5.64a.75.75 0 0 1 0-1.06Zm12.37 12.37a.75.75 0 0 1 1.06 0l1.41 1.41a.75.75 0 0 1-1.06 1.06l-1.41-1.41a.75.75 0 0 1 0-1.06ZM1.75 12a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75Zm16.75 0a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1-.75-.75ZM5.99 16.95a.75.75 0 0 1 1.06 1.06l-1.41 1.41a.75.75 0 0 1-1.06-1.06l1.41-1.41Zm12.37-12.37a.75.75 0 1 1 1.06 1.06l-1.41 1.41a.75.75 0 1 1-1.06-1.06l1.41-1.41Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+    <div class="accessibility-menu-wrap">
+      <button class="icon-btn accessibility-toggle" id="accessibilityToggle" type="button" aria-expanded="false" aria-controls="accessibilityMenu" aria-label="Ustawienia dostępności">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="icon-svg icon-accessibility" focusable="false">
+            <circle cx="12" cy="4.75" r="1.85" fill="currentColor" />
+            <path d="M5.1 8.45a1.2 1.2 0 1 1 .22-2.39c2.33.21 4.48.31 6.46.31 1.97 0 4.1-.1 6.38-.31a1.2 1.2 0 1 1 .22 2.39c-1.85.17-3.58.27-5.19.31v4.45l1.68 5.66a1.25 1.25 0 0 1-2.4.71l-1.3-4.38-1.27 4.38a1.25 1.25 0 0 1-2.4-.7l1.65-5.67V8.74c-1.3-.04-2.99-.14-5.05-.29Z" fill="currentColor" />
+            <path d="M7.1 20.15a1.2 1.2 0 0 1-1.16-1.5l1.4-5.18a1.2 1.2 0 1 1 2.32.63l-1.4 5.18a1.2 1.2 0 0 1-1.16.87Zm9.72 0a1.2 1.2 0 0 1-1.16-.88l-1.37-5.18a1.2 1.2 0 0 1 2.32-.61l1.37 5.18a1.2 1.2 0 0 1-1.16 1.49Z" fill="currentColor" />
+          </svg>
+        </span>
+      </button>
+      <div class="accessibility-menu" id="accessibilityMenu" hidden>
+        <button class="menu-btn" id="contrastToggle" type="button" aria-pressed="false"><span data-pl="Wysoki kontrast" data-en="High contrast">Wysoki kontrast</span></button>
+        <button class="menu-btn" id="fontToggle" type="button" aria-pressed="false"><span data-pl="Większy tekst" data-en="Larger text">Większy tekst</span></button>
+      </div>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<main class="site-shell subpage-layout">
+  <section class="page-hero">
+    <canvas id="candleChart" class="hero-bg-canvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="eyebrow fade-in fade-in-1" data-pl="STRONA PROJEKTÓW / RL + PYTHON" data-en="PROJECTS / RL + PYTHON">STRONA PROJEKTÓW / RL + PYTHON</div>
+    <h1 class="page-title fade-in fade-in-2" data-pl="Projekty i <span class='outline-text'>analizy</span>" data-en="Projects and <span class='outline-text'>analyses</span>">Projekty i <span class="outline-text">analizy</span></h1>
+    <p class="page-lead fade-in fade-in-3" data-pl="Tutaj trzymam część techniczną: eksperymenty z reinforcement learning, analizy finansowe w Pythonie i przykłady tego, jak podchodzę do danych, modeli i wyników." data-en="This is the technical section: reinforcement learning experiments, financial analyses in Python, and examples of how I approach data, models, and results.">Tutaj trzymam część techniczną: eksperymenty z reinforcement learning, analizy finansowe w Pythonie i przykłady tego, jak podchodzę do danych, modeli i wyników.</p>
+    <div class="button-row fade-in fade-in-4">
+      <a href="trading-algo.html" class="btn-primary" data-pl="Bot RL" data-en="RL Bot">Bot RL</a>
+      <a href="simulations.html" class="btn-ghost" data-pl="Analizy Python" data-en="Python analyses">Analizy Python</a>
+    </div>
+  </section>
+
+  <section class="page-section tiles-section">
+    <div class="content-wrap tiles-wrap">
+      <div class="tiles-grid tiles-grid-2">
+
+        <article class="feature-tile">
+          <canvas class="tile-canvas" id="projCandles" aria-hidden="true"></canvas>
+          <div class="tile-content">
+            <h3 class="tile-title" data-pl="Algorytm Tradingowy" data-en="Trading Algorithm">Algorytm Tradingowy</h3>
+            <p class="tile-desc" data-pl="Bot oparty na Deep RL — ewolucja od DQN do PPO na danych S&P 500." data-en="Deep RL bot — evolution from DQN to PPO on S&P 500 data.">Bot oparty na Deep RL — ewolucja od DQN do PPO na danych S&P 500.</p>
+            <a href="trading-algo.html" class="btn-inline" data-pl="Otwórz projekt" data-en="Open project">Otwórz projekt</a>
+          </div>
+        </article>
+
+        <article class="feature-tile">
+          <canvas class="tile-canvas" id="projStats" aria-hidden="true"></canvas>
+          <div class="tile-content">
+            <h3 class="tile-title" data-pl="Symulacje i Analizy" data-en="Simulations and Analyses">Symulacje i Analizy</h3>
+            <p class="tile-desc" data-pl="Analizy finansowe w Pythonie: rozkłady zwrotów, korelacje aktywów, Monte Carlo." data-en="Financial analyses in Python: return distributions, asset correlations, Monte Carlo.">Analizy finansowe w Pythonie: rozkłady zwrotów, korelacje aktywów, Monte Carlo.</p>
+            <a href="simulations.html" class="btn-inline" data-pl="Otwórz analizy" data-en="Open analyses">Otwórz analizy</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="footer-text">© 2026 Tomasz Głaz</span>
+  <span class="footer-text" data-pl="Katowice, Polska" data-en="Katowice, Poland">Katowice, Polska</span>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/candle-chart.js"></script>
+<script src="../assets/js/project-tiles.js"></script>
+</body>
+</html>
